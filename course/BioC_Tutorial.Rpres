@@ -27,7 +27,6 @@ Overview
 * [GenomicRanges](#/GRanges)
 * [Reading Sequence alignemnts](#/BAM)
 * [Annotations](#/Annotation)
-* [Exercises](#/Exercise)
 
 
 Bioconductor
@@ -337,6 +336,15 @@ coverage(gr1)
 
 Coverage can be exported as BigWig, Bedgraph, Wiggle and other formats to visualise in genome browsers.
 
+Time for Exercises!
+========================================================
+* [Exercises Part1](./Bioconductor_Exercises_Part1.html)
+<br><br>
+
+* [Exercises Part1 Solutions](./Bioconductor_Exercises_Part1_solutions.html)
+
+
+
 Reading Sequence Alignments
 =========================================================
 type:section
@@ -459,6 +467,16 @@ region <- RangesList(seq1=IRanges(1000, 2000),seq2=IRanges(1000, 2000))
 param1 <- ScanBamParam(what=c("rname", "pos", "cigar","qwidth"),which=region)
 SampleAlign1 <- readGAlignments(BamFile,param=param1)
 ```
+
+
+
+Time for Exercises!
+========================================================
+* [Exercises Part2](./Bioconductor_Exercises_Part2.html)
+<br><br>
+
+* [Exercises Part2 Solutions](./Bioconductor_Exercises_Part2_solutions.html)
+
 
 
 Annotation Packages
@@ -679,9 +697,10 @@ sessionInfo()
 ```
 
 Time for Exercises!
-=========================================================
-type:section
-id: Exercise
+========================================================
+* [Exercises Part3](./Bioconductor_Exercises_Part3.html)
+<br><br>
+
+* [Exercises Part3 Solutions](./Bioconductor_Exercises_Part3_solutions.html)
 
 
-* [Bioconductor Exercises](#Bioconductor_Exercises_Solutions_html.html)

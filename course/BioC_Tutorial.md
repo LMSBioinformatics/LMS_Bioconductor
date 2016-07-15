@@ -27,7 +27,6 @@ Overview
 * [GenomicRanges](#/GRanges)
 * [Reading Sequence alignemnts](#/BAM)
 * [Annotations](#/Annotation)
-* [Exercises](#/Exercise)
 
 
 Bioconductor
@@ -173,18 +172,18 @@ gr1
 
 ```
 GRanges object with 10 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  a     chr1  [11, 50]      - |         1  0.942380498629063
-  b     chr2  [12, 51]      + |         2 0.0271130583714694
-  c     chr2  [13, 52]      + |         3  0.300485679879785
-  d     chr2  [14, 53]      - |         4 0.0749846189282835
-  e     chr1  [15, 54]      - |         5  0.831094446359202
-  f     chr1  [16, 55]      + |         6  0.254205144708976
-  g     chr3  [17, 56]      + |         7   0.69333555479534
-  h     chr3  [18, 57]      + |         8  0.916082008276135
-  i     chr3  [19, 58]      - |         9  0.190386924892664
-  j     chr3  [20, 59]      - |        10  0.497146933339536
+    seqnames    ranges strand |     score                GC
+       <Rle> <IRanges>  <Rle> | <integer>         <numeric>
+  a     chr1  [11, 50]      - |         1 0.633847341872752
+  b     chr2  [12, 51]      + |         2 0.176502228248864
+  c     chr2  [13, 52]      + |         3  0.27664065011777
+  d     chr2  [14, 53]      - |         4  0.75653355428949
+  e     chr1  [15, 54]      - |         5 0.228635957930237
+  f     chr1  [16, 55]      + |         6 0.332726769614965
+  g     chr3  [17, 56]      + |         7  0.40534557076171
+  h     chr3  [18, 57]      + |         8 0.137429369147867
+  i     chr3  [19, 58]      - |         9 0.439554404001683
+  j     chr3  [20, 59]      - |        10 0.268420303473249
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -203,18 +202,18 @@ mcols(gr1)
 
 ```
 DataFrame with 10 rows and 2 columns
-       score         GC
-   <integer>  <numeric>
-1          1 0.94238050
-2          2 0.02711306
-3          3 0.30048568
-4          4 0.07498462
-5          5 0.83109445
-6          6 0.25420514
-7          7 0.69333555
-8          8 0.91608201
-9          9 0.19038692
-10        10 0.49714693
+       score        GC
+   <integer> <numeric>
+1          1 0.6338473
+2          2 0.1765022
+3          3 0.2766407
+4          4 0.7565336
+5          5 0.2286360
+6          6 0.3327268
+7          7 0.4053456
+8          8 0.1374294
+9          9 0.4395544
+10        10 0.2684203
 ```
 
 Constructing GRanges object from data frame
@@ -364,9 +363,9 @@ gr1[seqnames(gr1)=="chr1"]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  a     chr1  [11, 50]      - |         1 0.942380498629063
-  e     chr1  [15, 54]      - |         5 0.831094446359202
-  f     chr1  [16, 55]      + |         6 0.254205144708976
+  a     chr1  [11, 50]      - |         1 0.633847341872752
+  e     chr1  [15, 54]      - |         5 0.228635957930237
+  f     chr1  [16, 55]      + |         6 0.332726769614965
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -434,11 +433,11 @@ gr1[gr1_overlaps.m[,"queryHits"], ]
 GRanges object with 5 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.254205144708976
-  i     chr3  [19, 58]      - |         9 0.190386924892664
-  i     chr3  [19, 58]      - |         9 0.190386924892664
-  j     chr3  [20, 59]      - |        10 0.497146933339536
-  j     chr3  [20, 59]      - |        10 0.497146933339536
+  f     chr1  [16, 55]      + |         6 0.332726769614965
+  i     chr3  [19, 58]      - |         9 0.439554404001683
+  i     chr3  [19, 58]      - |         9 0.439554404001683
+  j     chr3  [20, 59]      - |        10 0.268420303473249
+  j     chr3  [20, 59]      - |        10 0.268420303473249
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -457,9 +456,9 @@ subsetByOverlaps(gr1,gr2,ignore.strand=F)
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.254205144708976
-  i     chr3  [19, 58]      - |         9 0.190386924892664
-  j     chr3  [20, 59]      - |        10 0.497146933339536
+  f     chr1  [16, 55]      + |         6 0.332726769614965
+  i     chr3  [19, 58]      - |         9 0.439554404001683
+  j     chr3  [20, 59]      - |        10 0.268420303473249
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -489,9 +488,9 @@ gr1[gr1 %over% gr2]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.254205144708976
-  i     chr3  [19, 58]      - |         9 0.190386924892664
-  j     chr3  [20, 59]      - |        10 0.497146933339536
+  f     chr1  [16, 55]      + |         6 0.332726769614965
+  i     chr3  [19, 58]      - |         9 0.439554404001683
+  j     chr3  [20, 59]      - |        10 0.268420303473249
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -592,6 +591,15 @@ integer-Rle of length 59 with 8 runs
 ```
 
 Coverage can be exported as BigWig, Bedgraph, Wiggle and other formats to visualise in genome browsers.
+
+Time for Exercises!
+========================================================
+* [Exercises Part1](./Bioconductor_Exercises_Part1.html)
+<br><br>
+
+* [Exercises Part1 Solutions](./Bioconductor_Exercises_Part1_solutions.html)
+
+
 
 Reading Sequence Alignments
 =========================================================
@@ -729,6 +737,16 @@ region <- RangesList(seq1=IRanges(1000, 2000),seq2=IRanges(1000, 2000))
 param1 <- ScanBamParam(what=c("rname", "pos", "cigar","qwidth"),which=region)
 SampleAlign1 <- readGAlignments(BamFile,param=param1)
 ```
+
+
+
+Time for Exercises!
+========================================================
+* [Exercises Part2](./Bioconductor_Exercises_Part2.html)
+<br><br>
+
+* [Exercises Part2 Solutions](./Bioconductor_Exercises_Part2_solutions.html)
+
 
 
 Annotation Packages
@@ -1107,9 +1125,10 @@ loaded via a namespace (and not attached):
 ```
 
 Time for Exercises!
-=========================================================
-type:section
-id: Exercise
+========================================================
+* [Exercises Part3](./Bioconductor_Exercises_Part3.html)
+<br><br>
+
+* [Exercises Part3 Solutions](./Bioconductor_Exercises_Part3_solutions.html)
 
 
-* [Bioconductor Exercises](#Bioconductor_Exercises_Solutions_html.html)

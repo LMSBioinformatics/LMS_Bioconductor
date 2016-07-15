@@ -1484,7 +1484,6 @@ hljs.initHighlightingOnLoad();
 <li><a href="#/GRanges">GenomicRanges</a></li>
 <li><a href="#/BAM">Reading Sequence alignemnts</a></li>
 <li><a href="#/Annotation">Annotations</a></li>
-<li><a href="#/Exercise">Exercises</a></li>
 </ul>
 
 </div>
@@ -1676,18 +1675,18 @@ gr1
 </code></pre>
 
 <pre><code>GRanges object with 10 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
-  a     chr1  [11, 50]      - |         1  0.942380498629063
-  b     chr2  [12, 51]      + |         2 0.0271130583714694
-  c     chr2  [13, 52]      + |         3  0.300485679879785
-  d     chr2  [14, 53]      - |         4 0.0749846189282835
-  e     chr1  [15, 54]      - |         5  0.831094446359202
-  f     chr1  [16, 55]      + |         6  0.254205144708976
-  g     chr3  [17, 56]      + |         7   0.69333555479534
-  h     chr3  [18, 57]      + |         8  0.916082008276135
-  i     chr3  [19, 58]      - |         9  0.190386924892664
-  j     chr3  [20, 59]      - |        10  0.497146933339536
+    seqnames    ranges strand |     score                GC
+       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
+  a     chr1  [11, 50]      - |         1 0.633847341872752
+  b     chr2  [12, 51]      + |         2 0.176502228248864
+  c     chr2  [13, 52]      + |         3  0.27664065011777
+  d     chr2  [14, 53]      - |         4  0.75653355428949
+  e     chr1  [15, 54]      - |         5 0.228635957930237
+  f     chr1  [16, 55]      + |         6 0.332726769614965
+  g     chr3  [17, 56]      + |         7  0.40534557076171
+  h     chr3  [18, 57]      + |         8 0.137429369147867
+  i     chr3  [19, 58]      - |         9 0.439554404001683
+  j     chr3  [20, 59]      - |        10 0.268420303473249
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1708,18 +1707,18 @@ gr1
 </code></pre>
 
 <pre><code>DataFrame with 10 rows and 2 columns
-       score         GC
-   &lt;integer&gt;  &lt;numeric&gt;
-1          1 0.94238050
-2          2 0.02711306
-3          3 0.30048568
-4          4 0.07498462
-5          5 0.83109445
-6          6 0.25420514
-7          7 0.69333555
-8          8 0.91608201
-9          9 0.19038692
-10        10 0.49714693
+       score        GC
+   &lt;integer&gt; &lt;numeric&gt;
+1          1 0.6338473
+2          2 0.1765022
+3          3 0.2766407
+4          4 0.7565336
+5          5 0.2286360
+6          6 0.3327268
+7          7 0.4053456
+8          8 0.1374294
+9          9 0.4395544
+10        10 0.2684203
 </code></pre>
 
 </div>
@@ -1871,9 +1870,9 @@ GRL &lt;- GRangesList(&quot;Peak1&quot; = gr1, &quot;Peak2&quot; = gr2)
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  a     chr1  [11, 50]      - |         1 0.942380498629063
-  e     chr1  [15, 54]      - |         5 0.831094446359202
-  f     chr1  [16, 55]      + |         6 0.254205144708976
+  a     chr1  [11, 50]      - |         1 0.633847341872752
+  e     chr1  [15, 54]      - |         5 0.228635957930237
+  f     chr1  [16, 55]      + |         6 0.332726769614965
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1943,11 +1942,11 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]
 <pre><code>GRanges object with 5 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  f     chr1  [16, 55]      + |         6 0.254205144708976
-  i     chr3  [19, 58]      - |         9 0.190386924892664
-  i     chr3  [19, 58]      - |         9 0.190386924892664
-  j     chr3  [20, 59]      - |        10 0.497146933339536
-  j     chr3  [20, 59]      - |        10 0.497146933339536
+  f     chr1  [16, 55]      + |         6 0.332726769614965
+  i     chr3  [19, 58]      - |         9 0.439554404001683
+  i     chr3  [19, 58]      - |         9 0.439554404001683
+  j     chr3  [20, 59]      - |        10 0.268420303473249
+  j     chr3  [20, 59]      - |        10 0.268420303473249
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1966,9 +1965,9 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  f     chr1  [16, 55]      + |         6 0.254205144708976
-  i     chr3  [19, 58]      - |         9 0.190386924892664
-  j     chr3  [20, 59]      - |        10 0.497146933339536
+  f     chr1  [16, 55]      + |         6 0.332726769614965
+  i     chr3  [19, 58]      - |         9 0.439554404001683
+  j     chr3  [20, 59]      - |        10 0.268420303473249
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1997,9 +1996,9 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  f     chr1  [16, 55]      + |         6 0.254205144708976
-  i     chr3  [19, 58]      - |         9 0.190386924892664
-  j     chr3  [20, 59]      - |        10 0.497146933339536
+  f     chr1  [16, 55]      + |         6 0.332726769614965
+  i     chr3  [19, 58]      - |         9 0.439554404001683
+  j     chr3  [20, 59]      - |        10 0.268420303473249
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -2112,6 +2111,18 @@ integer-Rle of length 59 with 8 runs
 </code></pre>
 
 <p>Coverage can be exported as BigWig, Bedgraph, Wiggle and other formats to visualise in genome browsers.</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Time for Exercises!</h3>
+<div class="slideContent" >
+<ul>
+<li><p><a href="./Bioconductor_Exercises_Part1.html">Exercises Part1</a>
+<br><br></p></li>
+<li><p><a href="./Bioconductor_Exercises_Part1_solutions.html">Exercises Part1 Solutions</a></p></li>
+</ul>
 
 </div>
 
@@ -2271,6 +2282,18 @@ SampleAlign &lt;- readGAlignments(BamFile)
 param1 &lt;- ScanBamParam(what=c(&quot;rname&quot;, &quot;pos&quot;, &quot;cigar&quot;,&quot;qwidth&quot;),which=region)
 SampleAlign1 &lt;- readGAlignments(BamFile,param=param1)
 </code></pre>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Time for Exercises!</h3>
+<div class="slideContent" >
+<ul>
+<li><p><a href="./Bioconductor_Exercises_Part2.html">Exercises Part2</a>
+<br><br></p></li>
+<li><p><a href="./Bioconductor_Exercises_Part2_solutions.html">Exercises Part2 Solutions</a></p></li>
+</ul>
 
 </div>
 
@@ -2676,11 +2699,13 @@ loaded via a namespace (and not attached):
 </div>
 
 </section>
-<section id="Exercise" data-state="section" data-transition="linear" data-transition-speed="default">
-<h2>Time for Exercises!</h2>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Time for Exercises!</h3>
 <div class="slideContent" >
 <ul>
-<li><a href="#Bioconductor_Exercises_Solutions_html.html">Bioconductor Exercises</a></li>
+<li><p><a href="./Bioconductor_Exercises_Part3.html">Exercises Part3</a>
+<br><br></p></li>
+<li><p><a href="./Bioconductor_Exercises_Part3_solutions.html">Exercises Part3 Solutions</a></p></li>
 </ul>
 
 </div>

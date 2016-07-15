@@ -23,19 +23,22 @@ output: html_document
     + Subset the above GRanges object to include only protein coding genes
     + Subset the GRanges object again with genes in main chromsomes (1-22,X,Y)
     + Create another GRanges object with genes in chr1:1544000-2371000
-8. Create a GRanges of Transcription start sites (1 bp range) for the GRanges object created in Q7.
-    + Tip: How to identify TSS for genes in forward/reverse strand?
-9. Create a GRanges object of human promoters with TSS ± 2000bp (using the GRanges object created in Q7).
-    + Tip: Read the documentation for `promoters` function.
-10. Retrieve 200 bp upstream promoter sequences for the given gene symbols `AQP1, ASNSP2, KPNA2, FRMD4A, NSUN5, VAC14` from Ensembl human biomart.
+8. Retrieve 200 bp upstream promoter sequences for the given gene symbols `AQP1, ASNSP2, KPNA2, FRMD4A, NSUN5, VAC14` from Ensembl human biomart.
     + Tips: 
     + Read documentation for `getSequence`
     + Use `type="hgnc_symbol"` and `seqType="coding_gene_flank"`
+9. Retrieve the transcript coordinates for genes as GRangesList from `TxDb.Hsapiens.UCSC.hg19.knownGene` (install it from Bioconductor if required)
+10. Retrieve exon coordiantes for genes from `TxDb.Hsapiens.UCSC.hg19.knownGene`
+
+    
+8. Import human hg19 gene coordiantes from "hg19Genes.txt and create a GRanges of Transcription start sites (1 bp range).
+    + Tip: How to identify TSS for genes in forward/reverse strand?
+9. Create a GRanges object of human promoters with TSS ± 2000bp (using the GRanges object created in Q8).
+    + Tip: Read the documentation for `promoters` function.
 11. Import ELF1 binding sites in K562 cell from Encode (ELF1_K562.bed) and create GRanges object. 
     + Tips: Import the ELF1 binding sites using `import.bed()` function from `rtracklayer` package
     + Find ELF1 binding sites overlap with promoters (TSS ± 1kb) using `findOverlaps` and `subsetByOverlaps` (Remember BED format uses 0-based coordinates)
-12. Retrieve the transcript coordinates for genes as GRangesList from `TxDb.Hsapiens.UCSC.hg19.knownGene` (install it from Bioconductor if required)
-13. Retrive exon coordiantes for genes from `TxDb.Hsapiens.UCSC.hg19.knownGene`
+    
 
 
 
