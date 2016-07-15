@@ -1,7 +1,8 @@
-Bioconductor
+Bioconductor Tutorial
 ========================================================
-author: MRC Clinical Sciences Centre
-date:http://mrccsc.github.io/Bioconductor/
+css: Rpress.css
+author: "MRC CSC Bioinformatics Core"
+date:http://mrccsc.github.io/training.html
 width: 1440
 height: 1100
 autosize: true
@@ -12,9 +13,12 @@ css:style.css
 
 MRC CSC Training Resources
 ========================================================
-* [Introduction R Part 1](#/Intro)
-* [Introduction R Part 2](#/Intro)
-
+* [Reproducible R](http://mrccsc.github.io/Reproducible-R/)
+* [Intermediate R - Data analysis sand Visualisation](http://bioinformatics-core-shared-training.github.io/r-intermediate/)
+* [Statistics in R](http://mrccsc.github.io/StatisticsInR/)
+* [Genomic File Formats](http://mrccsc.github.io/genomic_formats/)
+* [ChIP-seq (short)](http://mrccsc.github.io/ChIPseq_short/)
+* [RNA-seq (short)](http://mrccsc.github.io/RNAseq_short/)
 
 Overview
 ========================================================
@@ -49,18 +53,17 @@ Objectives
 
 www.bioconductor.org
 ========================================================
-<div align="center">
-<img src="./BioC.png" alt="BioC webpage" height="900" width="1500">
-</div>
+![BioC webpage](./BioC.png)
 
-Bioconductor Release 3.2
+
+Bioconductor Release 3.3
 ========================================================
-- Software (1104)
+- Software (1213)
     + Provides implementation of analysis methods
-- AnnotationData (895)
+- AnnotationData (916)
     + mapping between microarray probe, gene, pathway, gene ontology, homology and other annotations
     + Representations of GO, KEGG and other annotations, and can easily access NCBI, Biomart, UCSC and other sources
-- ExperimentData (257)
+- ExperimentData (293)
     + code, data and documentation for specific experiments or projects
 
 Installating BioC Packages
@@ -97,7 +100,7 @@ library("limma")
 ```
 - Browse Vignettes browseVignettes(package="limma")
 - Bioconductor Course Materials: http://www.bioconductor.org/help/course-materials/
-- Bioconductor Support Forum list -  https://support.bioconductor.org/
+- Bioconductor Support Forum -  https://support.bioconductor.org/
 
 Prints version information about R and all loaded packages
 ```{r eval=FALSE}
@@ -132,10 +135,8 @@ Run Length Encoding (Rle)
 
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE}
-
 # Orginial vector
 # chr1, chr2, chr2, chr2, chr1, chr1, chr3, chr3
-
 library(GenomicRanges)
 chr <- Rle(c("chr1", "chr2", "chr1", "chr3"), c(1, 3, 2, 2))
 chr
@@ -230,9 +231,8 @@ Operations on GenomicRanges
 
 Operations on GenomicRanges
 ========================================================
-<div align="center">
-<img src="./GenomicRanges.jpg" alt="Operations on GenomicRanges" height="800" width="1400">
-</div>
+![Operations on GenomicRanges](./GenomicRanges.jpg)
+
 
 Operations on GenomicRanges
 ========================================================
@@ -260,7 +260,7 @@ Finding overlapping regions
 - One of the common tasks in sequencing data analysis
 - Ex: Identifying transcription factor binding sites overlap with promoters
 - <b>findOverlaps</b> function finds intervals overlap between two GRanges object.
-- Usage: <b>function(query,subject)</b>
+- Usage: <b>findOverlaps(query,subject)</b>
 ```{r, echo=TRUE, eval=TRUE,  message=FALSE}
 gr1_overlaps <- findOverlaps(gr1,gr2,ignore.strand=F)
 gr1_overlaps
@@ -335,6 +335,8 @@ Computing Coverage
 coverage(gr1)
 ```
 
+Coverage can be exported as BigWig, Bedgraph, Wiggle and other formats to visualise in genome browsers.
+
 Reading Sequence Alignments
 =========================================================
 type:section
@@ -347,6 +349,8 @@ File formats in NGS
 - SAM/BAM - Sequence Alignment/Map format
 - BED
 - Wiggle/bedgraph
+
+* [Genomic File Formats](http://mrccsc.github.io/genomic_formats/)
 
 <b>FASTQ</b>
 ```{r, echo=TRUE, eval=FALSE, message=FALSE}
@@ -627,8 +631,8 @@ USCmm9KnownGene <- makeTranscriptDbFromUCSC(genome = "mm9", tablename = "knownGe
 
 Save the annotation object and label them appropriately to facilitate reproducible research:
 ```{r, echo=TRUE, eval=TRUE,  message=FALSE, results='hide'}
-saveDb(txdb,file="Mouse_ucsc_mm9_20150204.sqlite")
-txdb <- loadDb("Mouse_ucsc_mm9_20150204.sqlite")
+saveDb(txdb,file="Mouse_ucsc_mm9_20160719.sqlite")
+txdb <- loadDb("Mouse_ucsc_mm9_20160719.sqlite")
 ```
 
 Another way of creating TxDb: </b>makeTxDbFromGFF()</b>
@@ -673,18 +677,11 @@ Session Info
 ```{r, echo=TRUE, eval=TRUE,  message=FALSE}
 sessionInfo()
 ```
+
 Time for Exercises!
 =========================================================
 type:section
 id: Exercise
 
 
-* [Bioconductor Exercises](Bioconductor_Exercises.html)
-
-Time for Solutions?
-=========================================================
-type:section
-id: Exercise
-
-
-* [Bioconductor Solutions](Bioconductor_Solutions.html)
+* [Bioconductor Exercises](#Bioconductor_Exercises_Solutions_html.html)

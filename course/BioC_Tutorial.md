@@ -1,7 +1,8 @@
-Bioconductor
+Bioconductor Tutorial
 ========================================================
-author: MRC Clinical Sciences Centre
-date:http://mrccsc.github.io/Bioconductor/
+css: Rpress.css
+author: "MRC CSC Bioinformatics Core"
+date:http://mrccsc.github.io/training.html
 width: 1440
 height: 1100
 autosize: true
@@ -12,9 +13,12 @@ css:style.css
 
 MRC CSC Training Resources
 ========================================================
-* [Introduction R Part 1](#/Intro)
-* [Introduction R Part 2](#/Intro)
-
+* [Reproducible R](http://mrccsc.github.io/Reproducible-R/)
+* [Intermediate R - Data analysis sand Visualisation](http://bioinformatics-core-shared-training.github.io/r-intermediate/)
+* [Statistics in R](http://mrccsc.github.io/StatisticsInR/)
+* [Genomic File Formats](http://mrccsc.github.io/genomic_formats/)
+* [ChIP-seq (short)](http://mrccsc.github.io/ChIPseq_short/)
+* [RNA-seq (short)](http://mrccsc.github.io/RNAseq_short/)
 
 Overview
 ========================================================
@@ -49,18 +53,17 @@ Objectives
 
 www.bioconductor.org
 ========================================================
-<div align="center">
-<img src="./BioC.png" alt="BioC webpage" height="900" width="1500">
-</div>
+![BioC webpage](./BioC.png)
 
-Bioconductor Release 3.2
+
+Bioconductor Release 3.3
 ========================================================
-- Software (1104)
+- Software (1213)
     + Provides implementation of analysis methods
-- AnnotationData (895)
+- AnnotationData (916)
     + mapping between microarray probe, gene, pathway, gene ontology, homology and other annotations
     + Representations of GO, KEGG and other annotations, and can easily access NCBI, Biomart, UCSC and other sources
-- ExperimentData (257)
+- ExperimentData (293)
     + code, data and documentation for specific experiments or projects
 
 Installating BioC Packages
@@ -99,7 +102,7 @@ library("limma")
 ```
 - Browse Vignettes browseVignettes(package="limma")
 - Bioconductor Course Materials: http://www.bioconductor.org/help/course-materials/
-- Bioconductor Support Forum list -  https://support.bioconductor.org/
+- Bioconductor Support Forum -  https://support.bioconductor.org/
 
 Prints version information about R and all loaded packages
 
@@ -138,7 +141,6 @@ Run Length Encoding (Rle)
 ```r
 # Orginial vector
 # chr1, chr2, chr2, chr2, chr1, chr1, chr3, chr3
-
 library(GenomicRanges)
 chr <- Rle(c("chr1", "chr2", "chr1", "chr3"), c(1, 3, 2, 2))
 chr
@@ -171,18 +173,18 @@ gr1
 
 ```
 GRanges object with 10 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  a     chr1  [11, 50]      - |         1  0.973482749657705
-  b     chr2  [12, 51]      + |         2  0.489824884803966
-  c     chr2  [13, 52]      + |         3  0.790050291456282
-  d     chr2  [14, 53]      - |         4  0.299866033950821
-  e     chr1  [15, 54]      - |         5  0.214736780151725
-  f     chr1  [16, 55]      + |         6 0.0982683303300291
-  g     chr3  [17, 56]      + |         7  0.282679233932868
-  h     chr3  [18, 57]      + |         8  0.918936123372987
-  i     chr3  [19, 58]      - |         9  0.383108801906928
-  j     chr3  [20, 59]      - |        10 0.0187094644643366
+    seqnames    ranges strand |     score                  GC
+       <Rle> <IRanges>  <Rle> | <integer>           <numeric>
+  a     chr1  [11, 50]      - |         1   0.695333998184651
+  b     chr2  [12, 51]      + |         2   0.446370174642652
+  c     chr2  [13, 52]      + |         3 0.00640185223892331
+  d     chr2  [14, 53]      - |         4  0.0108269010670483
+  e     chr1  [15, 54]      - |         5   0.879283293150365
+  f     chr1  [16, 55]      + |         6    0.27810152224265
+  g     chr3  [17, 56]      + |         7   0.188867798540741
+  h     chr3  [18, 57]      + |         8    0.93956321128644
+  i     chr3  [19, 58]      - |         9   0.268175356090069
+  j     chr3  [20, 59]      - |        10   0.310691988328472
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -201,18 +203,18 @@ mcols(gr1)
 
 ```
 DataFrame with 10 rows and 2 columns
-       score         GC
-   <integer>  <numeric>
-1          1 0.97348275
-2          2 0.48982488
-3          3 0.79005029
-4          4 0.29986603
-5          5 0.21473678
-6          6 0.09826833
-7          7 0.28267923
-8          8 0.91893612
-9          9 0.38310880
-10        10 0.01870946
+       score          GC
+   <integer>   <numeric>
+1          1 0.695333998
+2          2 0.446370175
+3          3 0.006401852
+4          4 0.010826901
+5          5 0.879283293
+6          6 0.278101522
+7          7 0.188867799
+8          8 0.939563211
+9          9 0.268175356
+10        10 0.310691988
 ```
 
 Constructing GRanges object from data frame
@@ -313,9 +315,8 @@ Operations on GenomicRanges
 
 Operations on GenomicRanges
 ========================================================
-<div align="center">
-<img src="./GenomicRanges.jpg" alt="Operations on GenomicRanges" height="800" width="1400">
-</div>
+![Operations on GenomicRanges](./GenomicRanges.jpg)
+
 
 Operations on GenomicRanges
 ========================================================
@@ -361,11 +362,11 @@ gr1[seqnames(gr1)=="chr1"]
 
 ```
 GRanges object with 3 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  a     chr1  [11, 50]      - |         1  0.973482749657705
-  e     chr1  [15, 54]      - |         5  0.214736780151725
-  f     chr1  [16, 55]      + |         6 0.0982683303300291
+    seqnames    ranges strand |     score                GC
+       <Rle> <IRanges>  <Rle> | <integer>         <numeric>
+  a     chr1  [11, 50]      - |         1 0.695333998184651
+  e     chr1  [15, 54]      - |         5 0.879283293150365
+  f     chr1  [16, 55]      + |         6  0.27810152224265
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -396,7 +397,7 @@ Finding overlapping regions
 - One of the common tasks in sequencing data analysis
 - Ex: Identifying transcription factor binding sites overlap with promoters
 - <b>findOverlaps</b> function finds intervals overlap between two GRanges object.
-- Usage: <b>function(query,subject)</b>
+- Usage: <b>findOverlaps(query,subject)</b>
 
 ```r
 gr1_overlaps <- findOverlaps(gr1,gr2,ignore.strand=F)
@@ -431,13 +432,13 @@ gr1[gr1_overlaps.m[,"queryHits"], ]
 
 ```
 GRanges object with 5 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  f     chr1  [16, 55]      + |         6 0.0982683303300291
-  i     chr3  [19, 58]      - |         9  0.383108801906928
-  i     chr3  [19, 58]      - |         9  0.383108801906928
-  j     chr3  [20, 59]      - |        10 0.0187094644643366
-  j     chr3  [20, 59]      - |        10 0.0187094644643366
+    seqnames    ranges strand |     score                GC
+       <Rle> <IRanges>  <Rle> | <integer>         <numeric>
+  f     chr1  [16, 55]      + |         6  0.27810152224265
+  i     chr3  [19, 58]      - |         9 0.268175356090069
+  i     chr3  [19, 58]      - |         9 0.268175356090069
+  j     chr3  [20, 59]      - |        10 0.310691988328472
+  j     chr3  [20, 59]      - |        10 0.310691988328472
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -454,11 +455,11 @@ subsetByOverlaps(gr1,gr2,ignore.strand=F)
 
 ```
 GRanges object with 3 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  f     chr1  [16, 55]      + |         6 0.0982683303300291
-  i     chr3  [19, 58]      - |         9  0.383108801906928
-  j     chr3  [20, 59]      - |        10 0.0187094644643366
+    seqnames    ranges strand |     score                GC
+       <Rle> <IRanges>  <Rle> | <integer>         <numeric>
+  f     chr1  [16, 55]      + |         6  0.27810152224265
+  i     chr3  [19, 58]      - |         9 0.268175356090069
+  j     chr3  [20, 59]      - |        10 0.310691988328472
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -486,11 +487,11 @@ gr1[gr1 %over% gr2]
 
 ```
 GRanges object with 3 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  f     chr1  [16, 55]      + |         6 0.0982683303300291
-  i     chr3  [19, 58]      - |         9  0.383108801906928
-  j     chr3  [20, 59]      - |        10 0.0187094644643366
+    seqnames    ranges strand |     score                GC
+       <Rle> <IRanges>  <Rle> | <integer>         <numeric>
+  f     chr1  [16, 55]      + |         6  0.27810152224265
+  i     chr3  [19, 58]      - |         9 0.268175356090069
+  j     chr3  [20, 59]      - |        10 0.310691988328472
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -590,6 +591,8 @@ integer-Rle of length 59 with 8 runs
   Values :  0  1  2  3  4  3  2  1
 ```
 
+Coverage can be exported as BigWig, Bedgraph, Wiggle and other formats to visualise in genome browsers.
+
 Reading Sequence Alignments
 =========================================================
 type:section
@@ -602,6 +605,8 @@ File formats in NGS
 - SAM/BAM - Sequence Alignment/Map format
 - BED
 - Wiggle/bedgraph
+
+* [Genomic File Formats](http://mrccsc.github.io/genomic_formats/)
 
 <b>FASTQ</b>
 
@@ -985,8 +990,8 @@ USCmm9KnownGene <- makeTranscriptDbFromUCSC(genome = "mm9", tablename = "knownGe
 Save the annotation object and label them appropriately to facilitate reproducible research:
 
 ```r
-saveDb(txdb,file="Mouse_ucsc_mm9_20150204.sqlite")
-txdb <- loadDb("Mouse_ucsc_mm9_20150204.sqlite")
+saveDb(txdb,file="Mouse_ucsc_mm9_20160719.sqlite")
+txdb <- loadDb("Mouse_ucsc_mm9_20160719.sqlite")
 ```
 
 Another way of creating TxDb: </b>makeTxDbFromGFF()</b>
@@ -1014,7 +1019,7 @@ marts[1,]
 
 ```
                biomart          version
-1 ENSEMBL_MART_ENSEMBL Ensembl Genes 83
+1 ENSEMBL_MART_ENSEMBL Ensembl Genes 84
 ```
 
 ```r
@@ -1063,7 +1068,7 @@ sessionInfo()
 ```
 R version 3.2.3 (2015-12-10)
 Platform: x86_64-apple-darwin13.4.0 (64-bit)
-Running under: OS X 10.11.3 (El Capitan)
+Running under: OS X 10.11.2 (El Capitan)
 
 locale:
 [1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
@@ -1078,40 +1083,33 @@ other attached packages:
  [3] GenomicFeatures_1.22.13                
  [4] org.Hs.eg.db_3.2.3                     
  [5] RSQLite_1.0.0                          
- [6] DBI_0.3.1                              
+ [6] DBI_0.4-1                              
  [7] AnnotationDbi_1.32.3                   
  [8] GenomicAlignments_1.6.3                
  [9] SummarizedExperiment_1.0.2             
 [10] Biobase_2.30.0                         
 [11] Rsamtools_1.22.0                       
-[12] Biostrings_2.38.4                      
+[12] Biostrings_2.38.3                      
 [13] XVector_0.10.0                         
 [14] GenomicRanges_1.22.4                   
 [15] GenomeInfoDb_1.6.3                     
-[16] IRanges_2.4.7                          
+[16] IRanges_2.4.8                          
 [17] S4Vectors_0.8.11                       
 [18] BiocGenerics_0.16.1                    
-[19] knitr_1.12.3                           
+[19] knitr_1.12                             
 
 loaded via a namespace (and not attached):
  [1] magrittr_1.5         zlibbioc_1.16.0      BiocParallel_1.4.3  
- [4] stringr_1.0.0        tools_3.2.3          lambda.r_1.1.7      
- [7] futile.logger_1.4.1  rtracklayer_1.30.2   formatR_1.2.1       
-[10] futile.options_1.0.0 bitops_1.0-6         RCurl_1.95-4.7      
-[13] evaluate_0.8         stringi_1.0-1        XML_3.98-1.3        
+ [4] stringr_1.0.0        tools_3.2.3          lambda.r_1.1.9      
+ [7] futile.logger_1.4.1  rtracklayer_1.30.4   formatR_1.4         
+[10] futile.options_1.0.0 bitops_1.0-6         RCurl_1.95-4.8      
+[13] evaluate_0.8         stringi_1.1.1        XML_3.98-1.4        
 ```
+
 Time for Exercises!
 =========================================================
 type:section
 id: Exercise
 
 
-* [Bioconductor Exercises](Bioconductor_Exercises.html)
-
-Time for Solutions?
-=========================================================
-type:section
-id: Exercise
-
-
-* [Bioconductor Solutions](Bioconductor_Solutions.html)
+* [Bioconductor Exercises](#Bioconductor_Exercises_Solutions_html.html)
