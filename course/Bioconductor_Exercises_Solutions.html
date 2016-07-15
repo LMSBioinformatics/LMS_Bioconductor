@@ -130,8 +130,8 @@ $(document).ready(function () {
 <li>Check what kind of annotation data can be extracted using <code>org.Hs.eg.db</code> package</li>
 <li>Print few gene names from <code>org.Hs.eg.db</code></li>
 <li>Retrieve gene name, chromosome and Ensembl gene identifiers for “HEBP2” and “PRND” from <code>org.Hs.eg.db</code></li>
-<li><p>Retrieve gene symbol, gene name and gene alias for genes in chromosome 2 for human using <code>org.Hs.eg.db</code></p></li>
-<li><p>Print non-redundant list of chromosomes from <code>org.Mm.eg.db</code></p></li>
+<li>Retrieve gene symbol, gene name and gene alias for genes in chromosome 2 for human using <code>org.Hs.eg.db</code></li>
+<li>Print non-redundant list of chromosomes from <code>org.Mm.eg.db</code></li>
 <li>How many annotation datasets available in Ensembl Biomart?</li>
 <li>Retrieve genomic coordinates for human genes from Ensembl biomart and build a GRanges object.
 <ul>
@@ -139,28 +139,30 @@ $(document).ready(function () {
 <li>Subset the GRanges object again with genes in main chromsomes (1-22,X,Y)</li>
 <li>Create another GRanges object with genes in chr1:1544000-2371000</li>
 </ul></li>
-<li>Retrieve 200 bp upstream promoter sequences for the given gene symbols <code>AQP1, ASNSP2, KPNA2, FRMD4A, NSUN5, VAC14</code> from Ensembl human biomart.</li>
-</ol>
+<li>Create a GRanges of Transcription start sites (1 bp range) for the GRanges object created in Q7.
+<ul>
+<li>Tip: How to identify TSS for genes in forward/reverse strand?</li>
+</ul></li>
+<li>Create a GRanges object of human promoters with TSS ± 2000bp (using the GRanges object created in Q7).
+<ul>
+<li>Tip: Read the documentation for <code>promoters</code> function.</li>
+</ul></li>
+<li>Retrieve 200 bp upstream promoter sequences for the given gene symbols <code>AQP1, ASNSP2, KPNA2, FRMD4A, NSUN5, VAC14</code> from Ensembl human biomart.
 <ul>
 <li>Tips:</li>
 <li>Read documentation for <code>getSequence</code></li>
 <li>Use <code>type=&quot;hgnc_symbol&quot;</code> and <code>seqType=&quot;coding_gene_flank&quot;</code></li>
-</ul>
-<ol start="7" style="list-style-type: decimal">
-<li>Create a GRanges of Transcription start sites (1 bp range) for the GRanges object created in Q5.
-<ul>
-<li>Tip: How to identify TSS for genes in forward/reverse strand?</li>
 </ul></li>
-<li><p>Create a GRanges object of human promoters with TSS ± 2000bp (using the GRanges object created in Q5). + Tip: Read the documentation for <code>promoters</code> function.</p></li>
 <li>Import ELF1 binding sites in K562 cell from Encode (ELF1_K562.bed) and create GRanges object.
 <ul>
-<li>Tips:</li>
-<li>Import the ELF1 binding sites using <code>import.bed()</code> function from <code>rtracklayer</code> package and compare it with GRanges object created in Q8</li>
+<li>Tips: Import the ELF1 binding sites using <code>import.bed()</code> function from <code>rtracklayer</code> package</li>
 <li>Find ELF1 binding sites overlap with promoters (TSS ± 1kb) using <code>findOverlaps</code> and <code>subsetByOverlaps</code> (Remember BED format uses 0-based coordinates)</li>
 </ul></li>
-<li><p>Retrieve the transcript coordinates for genes as GRangesList from <code>TxDb.Hsapiens.UCSC.hg19.knownGene</code> (install it from Bioconductor if required)</p></li>
+<li>Retrieve the transcript coordinates for genes as GRangesList from <code>TxDb.Hsapiens.UCSC.hg19.knownGene</code> (install it from Bioconductor if required)</li>
+<li>Retrive exon coordiantes for genes from <code>TxDb.Hsapiens.UCSC.hg19.knownGene</code></li>
 </ol>
-<p><strong>Additional Exercise</strong></p>
+<div id="additional-exercise" class="section level2">
+<h2><strong>Additional Exercise</strong></h2>
 <ul>
 <li>Download the following BAM and index files (.bai) (ENCODE data - ChIP-Seq of CTCF in Ag04449 human fibroblast cells).</li>
 <li><a href="http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeUwTfbs/wgEncodeUwTfbsAg04449CtcfStdAlnRep1.bam" class="uri">http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeUwTfbs/wgEncodeUwTfbsAg04449CtcfStdAlnRep1.bam</a></li>
@@ -172,10 +174,10 @@ $(document).ready(function () {
 </ul>
 <p><br><br></p>
 </div>
-<div id="solutions" class="section level1">
-<h1>Solutions</h1>
-<div id="print-few-gene-names-from-org.hs.eg.db" class="section level2">
-<h2>1. Print few gene names from org.Hs.eg.db</h2>
+<div id="solutions" class="section level2">
+<h2>Solutions</h2>
+<div id="check-what-kind-of-annotation-data-can-be-extracted-using-org.hs.eg.db-package" class="section level4">
+<h4>1. Check what kind of annotation data can be extracted using <code>org.Hs.eg.db</code> package</h4>
 <pre class="r"><code>library(&quot;org.Hs.eg.db&quot;)
 ## Warning: package 'DBI' was built under R version 3.2.5
 columns(org.Hs.eg.db)
@@ -185,8 +187,11 @@ columns(org.Hs.eg.db)
 ## [13] &quot;IPI&quot;          &quot;MAP&quot;          &quot;OMIM&quot;         &quot;ONTOLOGY&quot;    
 ## [17] &quot;ONTOLOGYALL&quot;  &quot;PATH&quot;         &quot;PFAM&quot;         &quot;PMID&quot;        
 ## [21] &quot;PROSITE&quot;      &quot;REFSEQ&quot;       &quot;SYMBOL&quot;       &quot;UCSCKG&quot;      
-## [25] &quot;UNIGENE&quot;      &quot;UNIPROT&quot;
-head(keys(org.Hs.eg.db,keytype=&quot;GENENAME&quot;))
+## [25] &quot;UNIGENE&quot;      &quot;UNIPROT&quot;</code></pre>
+</div>
+<div id="print-few-gene-names-from-org.hs.eg.db" class="section level4">
+<h4>2. Print few gene names from <code>org.Hs.eg.db</code></h4>
+<pre class="r"><code>head(keys(org.Hs.eg.db,keytype=&quot;GENENAME&quot;))
 ## [1] &quot;alpha-1-B glycoprotein&quot;                               
 ## [2] &quot;alpha-2-macroglobulin&quot;                                
 ## [3] &quot;alpha-2-macroglobulin pseudogene 1&quot;                   
@@ -194,33 +199,18 @@ head(keys(org.Hs.eg.db,keytype=&quot;GENENAME&quot;))
 ## [5] &quot;N-acetyltransferase 2 (arylamine N-acetyltransferase)&quot;
 ## [6] &quot;N-acetyltransferase pseudogene&quot;</code></pre>
 </div>
-<div id="print-non-redundant-list-of-chromosomes-from-org.mm.eg.db" class="section level2">
-<h2>2. Print non-redundant list of chromosomes from org.Mm.eg.db</h2>
-<pre class="r"><code>library(&quot;org.Mm.eg.db&quot;)
-unique(keys(org.Mm.eg.db,keytype=&quot;CHR&quot;))
-##  [1] &quot;6&quot;  &quot;11&quot; &quot;4&quot;  &quot;3&quot;  &quot;2&quot;  &quot;X&quot;  &quot;17&quot; &quot;1&quot;  &quot;7&quot;  &quot;5&quot;  &quot;15&quot; &quot;12&quot; &quot;9&quot;  &quot;8&quot; 
-## [15] &quot;16&quot; &quot;13&quot; &quot;19&quot; &quot;14&quot; &quot;10&quot; &quot;18&quot; &quot;Y&quot;  &quot;MT&quot; &quot;Un&quot;</code></pre>
-</div>
-<div id="retrieve-gene-name-chromosome-and-ensembl-gene-identifiers-for-hebp2-and-prnd-from-org.hs.eg.db" class="section level2">
-<h2>3. Retrieve gene name, chromosome and Ensembl gene identifiers for “HEBP2” and “PRND” from org.Hs.eg.db</h2>
+<div id="retrieve-gene-name-chromosome-and-ensembl-gene-identifiers-for-hebp2-and-prnd-from-org.hs.eg.db" class="section level4">
+<h4>3. Retrieve gene name, chromosome and Ensembl gene identifiers for “HEBP2” and “PRND” from <code>org.Hs.eg.db</code></h4>
 <pre class="r"><code>select(org.Hs.eg.db,keys=c(&quot;HEBP2&quot;,&quot;PRND&quot;),keytype=&quot;SYMBOL&quot;,
        columns=c(&quot;GENENAME&quot;,&quot;CHR&quot;,&quot;ENSEMBL&quot;))
-## Warning in .deprecatedColsMessage(): Accessing gene location information via 'CHR','CHRLOC','CHRLOCEND'
-##   is deprecated. Please use a range based accessor like genes(), or
-##   select() with columns values like TXCHROM and TXSTART on a TxDb or
-##   OrganismDb object instead.
 ##   SYMBOL                 GENENAME CHR         ENSEMBL
 ## 1  HEBP2   heme binding protein 2   6 ENSG00000051620
 ## 2   PRND prion protein 2 (dublet)  20 ENSG00000171864</code></pre>
 </div>
-<div id="retrieve-gene-symbol-gene-name-and-gene-alias-for-genes-in-chromosome-2-for-human-using-org.hs.eg.db" class="section level2">
-<h2>4. Retrieve gene symbol, gene name and gene alias for genes in chromosome 2 for human using org.Hs.eg.db</h2>
+<div id="retrieve-gene-symbol-gene-name-and-gene-alias-for-genes-in-chromosome-2-for-human-using-org.hs.eg.db" class="section level4">
+<h4>4. Retrieve gene symbol, gene name and gene alias for genes in chromosome 2 for human using <code>org.Hs.eg.db</code></h4>
 <pre class="r"><code>chr2Genes &lt;- select(org.Hs.eg.db,keys=&quot;2&quot;,keytype=&quot;CHR&quot;,
                     columns=c(&quot;SYMBOL&quot;,&quot;GENENAME&quot;,&quot;ALIAS&quot;))
-## Warning in .deprecatedColsMessage(): Accessing gene location information via 'CHR','CHRLOC','CHRLOCEND'
-##   is deprecated. Please use a range based accessor like genes(), or
-##   select() with columns values like TXCHROM and TXSTART on a TxDb or
-##   OrganismDb object instead.
 head(chr2Genes)
 ##   CHR SYMBOL                                 GENENAME   ALIAS
 ## 1   2   AAMP angio-associated, migratory cell protein    AAMP
@@ -230,21 +220,53 @@ head(chr2Genes)
 ## 5   2   ACP1              acid phosphatase 1, soluble    HAAP
 ## 6   2   ACP1              acid phosphatase 1, soluble LMW-PTP</code></pre>
 </div>
-<div id="retrieve-genomic-coordinates-for-human-protein-coding-genes-from-ensembl-biomart-and-build-granges-object.-include-genes-in-only-main-chromosomes-1-22xy." class="section level2">
-<h2>5. Retrieve genomic coordinates for human protein coding genes from Ensembl biomart and build GRanges object. Include genes in only main chromosomes (1-22,X,Y).</h2>
-<p>Tips:</p>
+<div id="print-non-redundant-list-of-chromosomes-from-org.mm.eg.db" class="section level4">
+<h4>5. Print non-redundant list of chromosomes from <code>org.Mm.eg.db</code></h4>
+<pre class="r"><code>library(&quot;org.Mm.eg.db&quot;)
+unique(keys(org.Mm.eg.db,keytype=&quot;CHR&quot;))
+##  [1] &quot;6&quot;  &quot;11&quot; &quot;4&quot;  &quot;3&quot;  &quot;2&quot;  &quot;X&quot;  &quot;17&quot; &quot;1&quot;  &quot;7&quot;  &quot;5&quot;  &quot;15&quot; &quot;12&quot; &quot;9&quot;  &quot;8&quot; 
+## [15] &quot;16&quot; &quot;13&quot; &quot;19&quot; &quot;14&quot; &quot;10&quot; &quot;18&quot; &quot;Y&quot;  &quot;MT&quot; &quot;Un&quot;</code></pre>
+</div>
+<div id="how-many-annotation-datasets-available-in-ensembl-biomart" class="section level4">
+<h4>6. How many annotation datasets available in Ensembl Biomart?</h4>
+<pre class="r"><code>library(&quot;biomaRt&quot;)
+ensembl &lt;- useMart(biomart = &quot;ENSEMBL_MART_ENSEMBL&quot;, host = &quot;sep2015.archive.ensembl.org&quot;) # select ensembl
+ens_datasets &lt;- listDatasets(ensembl) # list datasets 
+head(ens_datasets)
+##                          dataset
+## 1         oanatinus_gene_ensembl
+## 2        cporcellus_gene_ensembl
+## 3        gaculeatus_gene_ensembl
+## 4         lafricana_gene_ensembl
+## 5 itridecemlineatus_gene_ensembl
+## 6        choffmanni_gene_ensembl
+##                                  description version
+## 1     Ornithorhynchus anatinus genes (OANA5)   OANA5
+## 2            Cavia porcellus genes (cavPor3) cavPor3
+## 3     Gasterosteus aculeatus genes (BROADS1) BROADS1
+## 4         Loxodonta africana genes (loxAfr3) loxAfr3
+## 5 Ictidomys tridecemlineatus genes (spetri2) spetri2
+## 6        Choloepus hoffmanni genes (choHof1) choHof1
+dim(ens_datasets)
+## [1] 69  3</code></pre>
+</div>
+<div id="retrieve-genomic-coordinates-for-human-genes-from-ensembl-biomart-and-build-a-granges-object." class="section level4">
+<h4>7. Retrieve genomic coordinates for human genes from Ensembl biomart and build a GRanges object.</h4>
 <ul>
+<li>Subset the above GRanges object to include only protein coding genes</li>
+<li>Subset the GRanges object again with genes in main chromsomes (1-22,X,Y)</li>
+<li><p>Create another GRanges object with genes in chr1:1544000-2371000</p>
+<ul>
+<li>Tips:</li>
 <li>You can select main chromosomes and “protein coding” genes by using appropriate filter and value.</li>
 <li>Search for “biotype” in available filters using <code>grep()</code></li>
 <li>Run <code>filterOptions(&quot;biotype&quot;,selectedmart)</code> to see the accepted values for “biotype” filter</li>
 <li>When multiple filters specified, “values” argument should be a list of vectors; each vector corresponds to each specified filter.</li>
-<li>Annotation fields to retrieve: “chromosome_name”, “start_position”, “end_position”, “ensembl_gene_id”, “strand”, “external_gene_name”</li>
+<li>Annotation fields to retrieve: “chromosome_name”, “start_position”, “end_position”,“ensembl_gene_id”, “strand”, “external_gene_name”</li>
 <li>Before creating GRanges object, add “chr” prefix to chromosome using <code>paste</code> function, Ex: change 1 to chr1 (required for next task)</li>
+</ul></li>
 </ul>
-<pre class="r"><code>library(&quot;biomaRt&quot;)
-ensembl &lt;- useMart(biomart = &quot;ENSEMBL_MART_ENSEMBL&quot;, host = &quot;sep2015.archive.ensembl.org&quot;) # select ensembl
-ens_datasets &lt;- listDatasets(ensembl) # list datasets 
-ens_human &lt;- useDataset(&quot;hsapiens_gene_ensembl&quot;,mart=ensembl) # select human dataset
+<pre class="r"><code>ens_human &lt;- useDataset(&quot;hsapiens_gene_ensembl&quot;,mart=ensembl) # select human dataset
 ens_human_Attr &lt;- listAttributes(ens_human) # list available annotation
 ens_human_filters &lt;- listFilters(ens_human) # list available filters
 availFilters &lt;- filterOptions(&quot;biotype&quot;,ens_human) # Displays accepted values for &quot;biotype&quot;
@@ -310,9 +332,7 @@ hg19Gene.GR
 ##   [19766]       NDRG2
 ##   -------
 ##   seqinfo: 24 sequences from an unspecified genome; no seqlengths</code></pre>
-</div>
-<div id="filter-the-above-granges-object-for-genes-in-chr11544000-2371000" class="section level2">
-<h2>6. Filter the above GRanges object for genes in chr1:1544000-2371000</h2>
+<p>Filter the above GRanges object for genes in chr1:1544000-2371000</p>
 <pre class="r"><code>chr1genes &lt;- hg19Gene.GR[seqnames(hg19Gene.GR)==&quot;chr1&quot; &amp; 
                          start(hg19Gene.GR) &gt; 1544000 &amp; 
                            end(hg19Gene.GR) &lt; 2371000]
@@ -329,15 +349,12 @@ head(chr1genes)
 ##   -------
 ##   seqinfo: 24 sequences from an unspecified genome; no seqlengths
 
-# alternate
+# alternate solution
 chr1genes &lt;- subset(hg19Gene.GR,start&gt;1544000 &amp; end&lt;2371000 &amp; seqnames==&quot;chr1&quot;)</code></pre>
 </div>
-<div id="create-a-granges-of-transcription-start-sites-1-bp-range-for-the-granges-object-created-in-q5." class="section level2">
-<h2>7. Create a GRanges of Transcription start sites (1 bp range) for the GRanges object created in Q5.</h2>
-<p>Tip:</p>
-<ul>
-<li>How to identify TSS for genes in forward/reverse strand?</li>
-</ul>
+<div id="create-a-granges-of-transcription-start-sites-1-bp-range-for-the-granges-object-created-in-q7." class="section level4">
+<h4>8. Create a GRanges of Transcription start sites (1 bp range) for the GRanges object created in Q7.</h4>
+<pre><code>+ Tip: How to identify TSS for genes in forward/reverse strand?</code></pre>
 <pre class="r"><code>hg19Gene$TSS &lt;- ifelse(hg19Gene$strand==1,hg19Gene$start_position,hg19Gene$end_position)
 
 hg19TSS &lt;- GRanges(seqnames=hg19Gene$chromosome_name,
@@ -376,8 +393,9 @@ hg19TSS
 ##   -------
 ##   seqinfo: 24 sequences from an unspecified genome; no seqlengths</code></pre>
 </div>
-<div id="create-a-granges-object-of-human-promoters-with-tss-2000bp-using-the-granges-object-created-in-q5.-tip-read-the-documentation-for-promoters-function." class="section level2">
-<h2>8. Create a GRanges object of human promoters with TSS ± 2000bp (using the GRanges object created in Q5). Tip: Read the documentation for <code>promoters</code> function.</h2>
+<div id="create-a-granges-object-of-human-promoters-with-tss-2000bp-using-the-granges-object-created-in-q7." class="section level4">
+<h4>9. Create a GRanges object of human promoters with TSS ± 2000bp (using the GRanges object created in Q7).</h4>
+<pre><code>+ Tip: Read the documentation for `promoters` function.</code></pre>
 <pre class="r"><code>hg19Promoters &lt;- promoters(hg19Gene.GR,upstream=2000,downstream=2000)
 hg19Promoters
 ## GRanges object with 19766 ranges and 2 metadata columns:
@@ -410,14 +428,21 @@ hg19Promoters
 ##   -------
 ##   seqinfo: 24 sequences from an unspecified genome; no seqlengths</code></pre>
 </div>
-<div id="import-elf1-binding-sites-in-k562-cell-from-encode-elf1_k562.bed-and-create-granges-object." class="section level2">
-<h2>9. Import ELF1 binding sites in K562 cell from Encode (ELF1_K562.bed) and create GRanges object.</h2>
-<p>Tips:</p>
-<ul>
-<li>Import the ELF1 binding sites using <code>import.bed()</code> function from <code>rtracklayer</code> package and compare it with the above GRanges object</li>
-<li>Find ELF1 binding sites overlap with promoters (TSS ± 1kb) using <code>findOverlaps</code> and <code>subsetByOverlaps</code></li>
-<li>Remember BED format uses 0-based coordinates</li>
-</ul>
+<div id="retrieve-200-bp-upstream-promoter-sequences-for-the-given-gene-symbols-aqp1-asnsp2-kpna2-frmd4a-nsun5-vac14-from-ensembl-human-biomart." class="section level4">
+<h4>10. Retrieve 200 bp upstream promoter sequences for the given gene symbols <code>AQP1, ASNSP2, KPNA2, FRMD4A, NSUN5, VAC14</code> from Ensembl human biomart.</h4>
+<pre><code>+ Tips: 
++ Read documentation for `getSequence`
++ Use `type=&quot;hgnc_symbol&quot;` and `seqType=&quot;coding_gene_flank&quot;`</code></pre>
+<pre class="r"><code>symbols &lt;- c(&quot;AQP1&quot;, &quot;ASNSP2&quot;, &quot;KPNA2&quot;, &quot;FRMD4A&quot;, &quot;NSUN5&quot;, &quot;VAC14&quot;)
+ensembl &lt;- useMart(biomart = &quot;ENSEMBL_MART_ENSEMBL&quot;, host = &quot;jul2015.archive.ensembl.org&quot;, dataset=&quot;hsapiens_gene_ensembl&quot;) # select ensembl
+
+seq &lt;- getSequence(id=symbols, type=&quot;hgnc_symbol&quot;,
+                  seqType=&quot;coding_gene_flank&quot;, upstream=200, mart = ensembl)</code></pre>
+</div>
+<div id="import-elf1-binding-sites-in-k562-cell-from-encode-elf1_k562.bed-and-create-granges-object." class="section level4">
+<h4>11. Import ELF1 binding sites in K562 cell from Encode (ELF1_K562.bed) and create GRanges object.</h4>
+<pre><code>+ Tips: Import the ELF1 binding sites using `import.bed()` function from `rtracklayer` package
++ Find ELF1 binding sites overlap with promoters (TSS ± 1kb) using `findOverlaps` and `subsetByOverlaps` (Remember BED format uses 0-based coordinates)</code></pre>
 <pre class="r"><code>library(&quot;rtracklayer&quot;)
 ## Warning: package 'rtracklayer' was built under R version 3.2.4
 ELF1 &lt;- read.table(&quot;ELF1_K562.bed&quot;,sep=&quot;\t&quot;,header=F)
@@ -470,30 +495,20 @@ ELF1_promoters1
 ##   seqinfo: 23 sequences from an unspecified genome; no seqlengths</code></pre>
 <p><b>Note the differences in the outputs!</b></p>
 </div>
-<div id="retrieve-the-transcript-coordinates-for-genes-as-grangeslist-from-txdb.hsapiens.ucsc.hg19.knowngene-install-it-from-bioconductor-if-required" class="section level2">
-<h2>10. Retrieve the transcript coordinates for genes as GRangesList from <code>TxDb.Hsapiens.UCSC.hg19.knownGene</code> (install it from Bioconductor if required)</h2>
+<div id="retrieve-the-transcript-coordinates-for-genes-as-grangeslist-from-txdb.hsapiens.ucsc.hg19.knowngene-install-it-from-bioconductor-if-required" class="section level4">
+<h4>12. Retrieve the transcript coordinates for genes as GRangesList from <code>TxDb.Hsapiens.UCSC.hg19.knownGene</code> (install it from Bioconductor if required)</h4>
 <pre class="r"><code># source(&quot;http://bioconductor.org/biocLite.R&quot;)
 # biocLite(&quot;TxDb.Hsapiens.UCSC.hg19.knownGene&quot;)
 library(&quot;TxDb.Hsapiens.UCSC.hg19.knownGene&quot;)
 hg19txdb &lt;- TxDb.Hsapiens.UCSC.hg19.knownGene
 TranscrtipsByGene &lt;- transcriptsBy(hg19txdb,by=&quot;gene&quot;) # inspect the output</code></pre>
 </div>
-<div id="retrieve-200-bp-upstream-promoter-sequences-for-the-given-gene-symbols-aqp1-asnsp2-kpna2-frmd4a-nsun5-vac14-from-ensembl-human-biomart" class="section level2">
-<h2>11. Retrieve 200 bp upstream promoter sequences for the given gene symbols <code>AQP1, ASNSP2, KPNA2, FRMD4A, NSUN5, VAC14</code> from Ensembl human biomart</h2>
-<p>Tips:</p>
-<ul>
-<li>Read documentation for <code>getSequence</code></li>
-<li>Use <code>type=&quot;hgnc_symbol&quot;</code> and <code>seqType=&quot;coding_gene_flank&quot;</code></li>
-</ul>
-<pre class="r"><code>symbols &lt;- c(&quot;AQP1&quot;, &quot;ASNSP2&quot;, &quot;KPNA2&quot;, &quot;FRMD4A&quot;, &quot;NSUN5&quot;, &quot;VAC14&quot;)
-
-library(&quot;biomaRt&quot;)
-ensembl &lt;- useMart(biomart = &quot;ENSEMBL_MART_ENSEMBL&quot;, host = &quot;jul2015.archive.ensembl.org&quot;, dataset=&quot;hsapiens_gene_ensembl&quot;) # select ensembl
-
-seq &lt;- getSequence(id=symbols, type=&quot;hgnc_symbol&quot;,
-                  seqType=&quot;coding_gene_flank&quot;,upstream=200, mart = ensembl)</code></pre>
+<div id="retrive-exon-coordiantes-for-genes-from-txdb.hsapiens.ucsc.hg19.knowngene" class="section level4">
+<h4>13. Retrive exon coordiantes for genes from <code>TxDb.Hsapiens.UCSC.hg19.knownGene</code></h4>
+<pre class="r"><code>ExonsByGene &lt;- exonsBy(hg19txdb,by=&quot;gene&quot;) # inspect the output</code></pre>
 </div>
-<div id="additional-exercise" class="section level2">
+</div>
+<div id="additional-exercise-1" class="section level2">
 <h2>Additional Exercise</h2>
 <ul>
 <li>Download the following BAM and index files (*.bai) (ENCODE data - ChIP-Seq of CTCF in Ag04449 human fibroblast cells)
