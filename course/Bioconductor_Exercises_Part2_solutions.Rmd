@@ -39,9 +39,6 @@ CTCFCov <- coverage(CTCF)
 # Export as bigWig
 export.bw(CTCFCov, "Ag04449_CTCF.bw")
 
-# Reads overlapping with promoters
-CTCFCounts <- countOverlaps(hg19Promoters,CTCF)
-
 # Identifying hg19 promoters
 hg19Gene <- read.table("hg19Genes.txt",sep="\t",header=T)
 hg19Gene.GR <- GRanges(seqnames=hg19Gene$chr,
@@ -50,6 +47,9 @@ hg19Gene.GR <- GRanges(seqnames=hg19Gene$chr,
                        EnsemblID=hg19Gene$ensID,
                        Symbol=hg19Gene$GeneSym)
 hg19Promoters <- promoters(hg19Gene.GR,upstream=2000,downstream=2000)
+
+# Reads overlapping with promoters
+CTCFCounts <- countOverlaps(hg19Promoters,CTCF)
 
 # Add CTCF counts as elementMetadata to hg19Promoters object
 mcols(hg19Promoters)$CTCF <- CTCFCounts
