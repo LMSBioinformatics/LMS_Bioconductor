@@ -55,14 +55,14 @@ www.bioconductor.org
 ![BioC webpage](./BioC.png)
 
 
-Bioconductor Release 3.3
+Bioconductor Release 3.4
 ========================================================
-- Software (1213)
+- Software (1296)
     + Provides implementation of analysis methods
-- AnnotationData (916)
+- AnnotationData (933)
     + mapping between microarray probe, gene, pathway, gene ontology, homology and other annotations
     + Representations of GO, KEGG and other annotations, and can easily access NCBI, Biomart, UCSC and other sources
-- ExperimentData (293)
+- ExperimentData (309)
     + code, data and documentation for specific experiments or projects
 
 Installating BioC Packages

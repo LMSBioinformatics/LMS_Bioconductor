@@ -55,14 +55,14 @@ www.bioconductor.org
 ![BioC webpage](./BioC.png)
 
 
-Bioconductor Release 3.3
+Bioconductor Release 3.4
 ========================================================
-- Software (1213)
+- Software (1296)
     + Provides implementation of analysis methods
-- AnnotationData (916)
+- AnnotationData (933)
     + mapping between microarray probe, gene, pathway, gene ontology, homology and other annotations
     + Representations of GO, KEGG and other annotations, and can easily access NCBI, Biomart, UCSC and other sources
-- ExperimentData (293)
+- ExperimentData (309)
     + code, data and documentation for specific experiments or projects
 
 Installating BioC Packages
@@ -174,16 +174,16 @@ gr1
 GRanges object with 10 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  a     chr1  [11, 50]      - |         1 0.633847341872752
-  b     chr2  [12, 51]      + |         2 0.176502228248864
-  c     chr2  [13, 52]      + |         3  0.27664065011777
-  d     chr2  [14, 53]      - |         4  0.75653355428949
-  e     chr1  [15, 54]      - |         5 0.228635957930237
-  f     chr1  [16, 55]      + |         6 0.332726769614965
-  g     chr3  [17, 56]      + |         7  0.40534557076171
-  h     chr3  [18, 57]      + |         8 0.137429369147867
-  i     chr3  [19, 58]      - |         9 0.439554404001683
-  j     chr3  [20, 59]      - |        10 0.268420303473249
+  a     chr1  [11, 50]      - |         1 0.503574332222342
+  b     chr2  [12, 51]      + |         2 0.824127555824816
+  c     chr2  [13, 52]      + |         3 0.762736540753394
+  d     chr2  [14, 53]      - |         4 0.945811715209857
+  e     chr1  [15, 54]      - |         5 0.558450569165871
+  f     chr1  [16, 55]      + |         6 0.750351777067408
+  g     chr3  [17, 56]      + |         7 0.106104471255094
+  h     chr3  [18, 57]      + |         8 0.464195047738031
+  i     chr3  [19, 58]      - |         9 0.444623367395252
+  j     chr3  [20, 59]      - |        10 0.229986754246056
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -204,16 +204,16 @@ mcols(gr1)
 DataFrame with 10 rows and 2 columns
        score        GC
    <integer> <numeric>
-1          1 0.6338473
-2          2 0.1765022
-3          3 0.2766407
-4          4 0.7565336
-5          5 0.2286360
-6          6 0.3327268
-7          7 0.4053456
-8          8 0.1374294
-9          9 0.4395544
-10        10 0.2684203
+1          1 0.5035743
+2          2 0.8241276
+3          3 0.7627365
+4          4 0.9458117
+5          5 0.5584506
+6          6 0.7503518
+7          7 0.1061045
+8          8 0.4641950
+9          9 0.4446234
+10        10 0.2299868
 ```
 
 Constructing GRanges object from data frame
@@ -363,9 +363,9 @@ gr1[seqnames(gr1)=="chr1"]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  a     chr1  [11, 50]      - |         1 0.633847341872752
-  e     chr1  [15, 54]      - |         5 0.228635957930237
-  f     chr1  [16, 55]      + |         6 0.332726769614965
+  a     chr1  [11, 50]      - |         1 0.503574332222342
+  e     chr1  [15, 54]      - |         5 0.558450569165871
+  f     chr1  [16, 55]      + |         6 0.750351777067408
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -433,11 +433,11 @@ gr1[gr1_overlaps.m[,"queryHits"], ]
 GRanges object with 5 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.332726769614965
-  i     chr3  [19, 58]      - |         9 0.439554404001683
-  i     chr3  [19, 58]      - |         9 0.439554404001683
-  j     chr3  [20, 59]      - |        10 0.268420303473249
-  j     chr3  [20, 59]      - |        10 0.268420303473249
+  f     chr1  [16, 55]      + |         6 0.750351777067408
+  i     chr3  [19, 58]      - |         9 0.444623367395252
+  i     chr3  [19, 58]      - |         9 0.444623367395252
+  j     chr3  [20, 59]      - |        10 0.229986754246056
+  j     chr3  [20, 59]      - |        10 0.229986754246056
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -456,9 +456,9 @@ subsetByOverlaps(gr1,gr2,ignore.strand=F)
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.332726769614965
-  i     chr3  [19, 58]      - |         9 0.439554404001683
-  j     chr3  [20, 59]      - |        10 0.268420303473249
+  f     chr1  [16, 55]      + |         6 0.750351777067408
+  i     chr3  [19, 58]      - |         9 0.444623367395252
+  j     chr3  [20, 59]      - |        10 0.229986754246056
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -488,9 +488,9 @@ gr1[gr1 %over% gr2]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.332726769614965
-  i     chr3  [19, 58]      - |         9 0.439554404001683
-  j     chr3  [20, 59]      - |        10 0.268420303473249
+  f     chr1  [16, 55]      + |         6 0.750351777067408
+  i     chr3  [19, 58]      - |         9 0.444623367395252
+  j     chr3  [20, 59]      - |        10 0.229986754246056
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -1037,7 +1037,7 @@ marts[1,]
 
 ```
                biomart          version
-1 ENSEMBL_MART_ENSEMBL Ensembl Genes 84
+1 ENSEMBL_MART_ENSEMBL Ensembl Genes 86
 ```
 
 ```r
@@ -1114,14 +1114,14 @@ other attached packages:
 [16] IRanges_2.4.8                          
 [17] S4Vectors_0.8.11                       
 [18] BiocGenerics_0.16.1                    
-[19] knitr_1.12                             
+[19] knitr_1.14                             
 
 loaded via a namespace (and not attached):
  [1] magrittr_1.5         zlibbioc_1.16.0      BiocParallel_1.4.3  
- [4] stringr_1.0.0        tools_3.2.3          lambda.r_1.1.9      
+ [4] stringr_1.1.0        tools_3.2.3          lambda.r_1.1.9      
  [7] futile.logger_1.4.1  rtracklayer_1.30.4   formatR_1.4         
 [10] futile.options_1.0.0 bitops_1.0-6         RCurl_1.95-4.8      
-[13] evaluate_0.8         stringi_1.1.1        XML_3.98-1.4        
+[13] evaluate_0.10        stringi_1.1.2        XML_3.98-1.4        
 ```
 
 Time for Exercises!
