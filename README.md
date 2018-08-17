@@ -1,7 +1,7 @@
 # Bioconductor
 
 
-##The Course
+## The Course
 
 This course introduces some of the fundamental concepts and tools available in Bioconductor.
 
