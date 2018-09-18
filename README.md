@@ -46,9 +46,9 @@ biocLite("GenomicRanges")
 </pre>
 
 <!--#### Download the material
-The material can either be downloaded as a [zip](https://github.com/mrccsc/Bioconductor/archive/master.zip)
+The material can either be downloaded as a [zip](https://github.com/LMSBioinformatics/LMS_Bioconductor/archive/master.zip)
 <pre>
-wget https://github.com/mrccsc/Bioconductor/archive/master.zip ./
+wget https://github.com/LMSBioinformatics/LMS_Bioconductor/archive/master.zip ./
 </pre>
 or checked out from our Github repository
 https://github.com/mrccsc/Bioconductor/ -->
