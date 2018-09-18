@@ -37,12 +37,13 @@ http://www.rstudio.com/
 #### Install required packages.
 
 Having downloaded R and RStudio, some additional packages are required (rmarkdown and ggplot2).  
+
 To install these,
 * First launch RStudio
 * Install the packages in the R console
 <pre>
 source("https://bioconductor.org/biocLite.R")
-biocLite("GenomicRanges")
+biocLite(c("GenomicRanges", "GenomicAlignments"))
 </pre>
 
 <!--#### Download the material
