@@ -1,7 +1,7 @@
 Bioconductor Tutorial
 ========================================================
 css: Rpress.css
-author: "MRC LMS Bioinformatics Core Team"
+author: MRC LMS Bioinformatics Core
 date:http://mrccsc.github.io/training.html
 width: 1440
 height: 1100
@@ -174,18 +174,18 @@ gr1
 
 ```
 GRanges object with 10 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  a     chr1  [11, 50]      - |         1  0.916675932705402
-  b     chr2  [12, 51]      + |         2   0.90750129125081
-  c     chr2  [13, 52]      + |         3  0.090078629553318
-  d     chr2  [14, 53]      - |         4  0.516084956470877
-  e     chr1  [15, 54]      - |         5  0.380787155590951
-  f     chr1  [16, 55]      + |         6  0.762622209032997
-  g     chr3  [17, 56]      + |         7    0.6920221215114
-  h     chr3  [18, 57]      + |         8  0.811944557586685
-  i     chr3  [19, 58]      - |         9  0.918694657739252
-  j     chr3  [20, 59]      - |        10 0.0875721955671906
+    seqnames    ranges strand |     score                  GC
+       <Rle> <IRanges>  <Rle> | <integer>           <numeric>
+  a     chr1  [11, 50]      - |         1    0.48668207670562
+  b     chr2  [12, 51]      + |         2   0.134117155568674
+  c     chr2  [13, 52]      + |         3   0.035371185047552
+  d     chr2  [14, 53]      - |         4   0.247030323138461
+  e     chr1  [15, 54]      - |         5   0.214533089427277
+  f     chr1  [16, 55]      + |         6   0.587903791572899
+  g     chr3  [17, 56]      + |         7  0.0587533877696842
+  h     chr3  [18, 57]      + |         8   0.787744001951069
+  i     chr3  [19, 58]      - |         9 0.00402930378913879
+  j     chr3  [20, 59]      - |        10   0.546321173897013
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -204,18 +204,18 @@ mcols(gr1)
 
 ```
 DataFrame with 10 rows and 2 columns
-       score         GC
-   <integer>  <numeric>
-1          1 0.91667593
-2          2 0.90750129
-3          3 0.09007863
-4          4 0.51608496
-5          5 0.38078716
-6          6 0.76262221
-7          7 0.69202212
-8          8 0.81194456
-9          9 0.91869466
-10        10 0.08757220
+       score          GC
+   <integer>   <numeric>
+1          1 0.486682077
+2          2 0.134117156
+3          3 0.035371185
+4          4 0.247030323
+5          5 0.214533089
+6          6 0.587903792
+7          7 0.058753388
+8          8 0.787744002
+9          9 0.004029304
+10        10 0.546321174
 ```
 
 Constructing GRanges object from data frame
@@ -366,9 +366,9 @@ gr1[seqnames(gr1)=="chr1"]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  a     chr1  [11, 50]      - |         1 0.916675932705402
-  e     chr1  [15, 54]      - |         5 0.380787155590951
-  f     chr1  [16, 55]      + |         6 0.762622209032997
+  a     chr1  [11, 50]      - |         1  0.48668207670562
+  e     chr1  [15, 54]      - |         5 0.214533089427277
+  f     chr1  [16, 55]      + |         6 0.587903791572899
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -433,13 +433,13 @@ gr1[gr1_overlaps.m[,"queryHits"], ]
 
 ```
 GRanges object with 5 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  f     chr1  [16, 55]      + |         6  0.762622209032997
-  i     chr3  [19, 58]      - |         9  0.918694657739252
-  i     chr3  [19, 58]      - |         9  0.918694657739252
-  j     chr3  [20, 59]      - |        10 0.0875721955671906
-  j     chr3  [20, 59]      - |        10 0.0875721955671906
+    seqnames    ranges strand |     score                  GC
+       <Rle> <IRanges>  <Rle> | <integer>           <numeric>
+  f     chr1  [16, 55]      + |         6   0.587903791572899
+  i     chr3  [19, 58]      - |         9 0.00402930378913879
+  i     chr3  [19, 58]      - |         9 0.00402930378913879
+  j     chr3  [20, 59]      - |        10   0.546321173897013
+  j     chr3  [20, 59]      - |        10   0.546321173897013
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -456,11 +456,11 @@ subsetByOverlaps(gr1,gr2,ignore.strand=F)
 
 ```
 GRanges object with 3 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  f     chr1  [16, 55]      + |         6  0.762622209032997
-  i     chr3  [19, 58]      - |         9  0.918694657739252
-  j     chr3  [20, 59]      - |        10 0.0875721955671906
+    seqnames    ranges strand |     score                  GC
+       <Rle> <IRanges>  <Rle> | <integer>           <numeric>
+  f     chr1  [16, 55]      + |         6   0.587903791572899
+  i     chr3  [19, 58]      - |         9 0.00402930378913879
+  j     chr3  [20, 59]      - |        10   0.546321173897013
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -488,11 +488,11 @@ gr1[gr1 %over% gr2]
 
 ```
 GRanges object with 3 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  f     chr1  [16, 55]      + |         6  0.762622209032997
-  i     chr3  [19, 58]      - |         9  0.918694657739252
-  j     chr3  [20, 59]      - |        10 0.0875721955671906
+    seqnames    ranges strand |     score                  GC
+       <Rle> <IRanges>  <Rle> | <integer>           <numeric>
+  f     chr1  [16, 55]      + |         6   0.587903791572899
+  i     chr3  [19, 58]      - |         9 0.00402930378913879
+  j     chr3  [20, 59]      - |        10   0.546321173897013
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
