@@ -1,7 +1,7 @@
 ---
-title: "Bioconductor Exercises Part3"
-author: "MRC CSC Bioinformatics Core Team"
-date: "19 July 2016"
+title: "Bioconductor Exercises Part 3"
+author: "MRC LMS Bioinformatics Core"
+date: "26 September 2018"
 output: html_document
 ---
 
@@ -126,6 +126,16 @@ seq <- getSequence(id=symbols, type="hgnc_symbol",
 # biocLite("TxDb.Hsapiens.UCSC.hg19.knownGene")
 library("TxDb.Hsapiens.UCSC.hg19.knownGene")
 hg19txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene
+TranscrtipsByGene <- transcriptsBy(hg19txdb,by="gene") # inspect the output
+```
+
+<br>
+
+Alternate solution
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE, collapse=TRUE}
+library(GenomicFeatures)
+hg19txdb <- makeTxDbFromUCSC(genome = "hg19", tablename = "knownGene")
 TranscrtipsByGene <- transcriptsBy(hg19txdb,by="gene") # inspect the output
 ```
 

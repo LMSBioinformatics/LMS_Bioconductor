@@ -1,7 +1,7 @@
 Bioconductor Tutorial
 ========================================================
 css: Rpress.css
-author: "MRC CSC Bioinformatics Core Team"
+author: "MRC LMS Bioinformatics Core Team"
 date:http://mrccsc.github.io/training.html
 width: 1440
 height: 1100
@@ -11,14 +11,14 @@ font-family: 'Slabo 27px', serif;
 css:style.css
 
 
-MRC CSC Training Resources
+MRC LMS Training Resources
 ========================================================
-* [Reproducible R](http://mrccsc.github.io/Reproducible-R/)
-* [Intermediate R - Data analysis sand Visualisation](http://bioinformatics-core-shared-training.github.io/r-intermediate/)
-* [Statistics in R](http://mrccsc.github.io/StatisticsInR/)
-* [Genomic File Formats](http://mrccsc.github.io/genomic_formats/)
-* [ChIP-seq (short)](http://mrccsc.github.io/ChIPseq_short/)
-* [RNA-seq (short)](http://mrccsc.github.io/RNAseq_short/)
+* [Reproducible R](https://lmsbioinformatics.github.io/LMS_Reproducible-R/)
+* [Intermediate R - Data analysis sand Visualisation](https://lmsbioinformatics.github.io/LMS_r-intermediate/)
+* [Statistics in R](https://lmsbioinformatics.github.io/LMS_StatisticsInR/)
+* [Genomic File Formats](https://lmsbioinformatics.github.io/LMS_genomic_formats/)
+* [ChIP-seq (short)](https://lmsbioinformatics.github.io/LMS_ChIPseq_short/)
+* [RNA-seq (short)](https://lmsbioinformatics.github.io/LMS_RNAseq_short/)
 
 Overview
 ========================================================
@@ -55,15 +55,17 @@ www.bioconductor.org
 ![BioC webpage](./BioC.png)
 
 
-Bioconductor Release 3.4
+Bioconductor Release 3.7
 ========================================================
-- Software (1296)
+- Software (1560)
     + Provides implementation of analysis methods
-- AnnotationData (933)
+- AnnotationData (919)
     + mapping between microarray probe, gene, pathway, gene ontology, homology and other annotations
     + Representations of GO, KEGG and other annotations, and can easily access NCBI, Biomart, UCSC and other sources
-- ExperimentData (309)
+- ExperimentData (342)
     + code, data and documentation for specific experiments or projects
+- Workflows (21)
+    + Common analysis work flows for genomics data
 
 Installating BioC Packages
 ========================================================
@@ -600,13 +602,22 @@ biocLite("TxDb.Mmusculus.UCSC.mm9.knownGene")
 
 
 
-TxDb.Mmusculus.UCSC.mm9.knownGene
+TranscriptDb - TxDb.Mmusculus.UCSC.mm9.knownGene
 ========================================================
 By default, the annotation object will have same name as package name. Create an alias for convenience.
-```{r, echo=TRUE, eval=TRUE, message=FALSE}
+```{r, echo=TRUE, eval=FALSE, message=FALSE}
 library("TxDb.Mmusculus.UCSC.mm9.knownGene")
 txdb <- TxDb.Mmusculus.UCSC.mm9.knownGene
 ```
+
+GenomicFeatures also provides functions to create TxDb objects directly from UCSC and Biomart databases: <b> makeTxDbFromBiomart</b> and <b>makeTxDbFromUCSC</b>
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE}
+library(GenomicFeatures)
+txdb <- makeTxDbFromUCSC(genome = "mm9", tablename = "knownGene")
+```
+
+
 
 Since TxDb are inherited from AnnotationDb object, we can use <b>columns, keys, select,</b> and <b>keytypes</b> functions.
 
@@ -615,7 +626,7 @@ keys <- c("100009600", "100009609", "100009614")
 select(txdb,keys=keys,columns=c("GENEID","TXNAME"),keytype="GENEID")
 ```
 
-TxDb.Mmusculus.UCSC.mm9.knownGene
+TranscriptDb - TxDb.Mmusculus.UCSC.mm9.knownGene
 ========================================================
 Most common operations performed on TxDb objects are retrieving exons, transcripts and CDS genomic coordinates.  The functions <b>genes, transcripts, exons</b>, and <b>cds</b> return the coordinates for the group as GRanges objects.
 
@@ -637,20 +648,20 @@ Transcripts <- transcriptsBy(txdb, by = "gene")
 Transcripts[1:2]
 ```
 
-TxDb.Mmusculus.UCSC.mm9.knownGene
+TranscriptDb - TxDb.Mmusculus.UCSC.mm9.knownGene
 ========================================================
 
 Other interesting functions: <b>intronsByTranscript, fiveUTRsByTranscript</b> and <b>threeUTRsByTranscript</b>
 
-GenomicFeatures also provides functions to create TxDb objects directly from UCSC and Biomart databases: <b>makeTranscriptDbFromBiomart</b> and <b>makeTranscriptDbFromUCSC</b>
+GenomicFeatures also provides functions to create TxDb objects directly from UCSC and Biomart databases: <b> makeTxDbFromBiomart</b> and <b>makeTxDbFromUCSC</b>
 ```{r, echo=TRUE, eval=FALSE, message=FALSE, results='hide'}
-USCmm9KnownGene <- makeTranscriptDbFromUCSC(genome = "mm9", tablename = "knownGene")
+USCmm9KnownGene <- makeTxDbFromUCSC(genome = "mm9", tablename = "knownGene")
 ```
 
 Save the annotation object and label them appropriately to facilitate reproducible research:
 ```{r, echo=TRUE, eval=TRUE,  message=FALSE, results='hide'}
-saveDb(txdb,file="Mouse_ucsc_mm9_20160719.sqlite")
-txdb <- loadDb("Mouse_ucsc_mm9_20160719.sqlite")
+saveDb(txdb,file="Mouse_ucsc_mm9_20180919.sqlite")
+txdb <- loadDb("Mouse_ucsc_mm9_20180919.sqlite")
 ```
 
 Another way of creating TxDb: </b>makeTxDbFromGFF()</b>
