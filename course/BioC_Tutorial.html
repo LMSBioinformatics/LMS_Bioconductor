@@ -1454,7 +1454,7 @@ hljs.initHighlightingOnLoad();
   <div class="slides">
 
 <section data-state="section" data-transition="linear" data-transition-speed="default">
-<h1>Bioconductor Tutorial</h1><p>MRC LMS Bioinformatics Core<br/>http:&#x2F;&#x2F;mrccsc.github.io&#x2F;training.html</p>
+<h1>Bioconductor Tutorial</h1><p>MRC LMS Bioinformatics Core<br/>https:&#x2F;&#x2F;lmsbioinformatics.github.io&#x2F;MRCLMSBioinfo&#x2F;LMStraining.html</p>
 
 <div class="slideContent" >
 
@@ -1680,18 +1680,18 @@ gr1
 </code></pre>
 
 <pre><code>GRanges object with 10 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                  GC
-       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;           &lt;numeric&gt;
-  a     chr1  [11, 50]      - |         1    0.48668207670562
-  b     chr2  [12, 51]      + |         2   0.134117155568674
-  c     chr2  [13, 52]      + |         3   0.035371185047552
-  d     chr2  [14, 53]      - |         4   0.247030323138461
-  e     chr1  [15, 54]      - |         5   0.214533089427277
-  f     chr1  [16, 55]      + |         6   0.587903791572899
-  g     chr3  [17, 56]      + |         7  0.0587533877696842
-  h     chr3  [18, 57]      + |         8   0.787744001951069
-  i     chr3  [19, 58]      - |         9 0.00402930378913879
-  j     chr3  [20, 59]      - |        10   0.546321173897013
+    seqnames    ranges strand |     score                 GC
+       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
+  a     chr1  [11, 50]      - |         1  0.503775882301852
+  b     chr2  [12, 51]      + |         2 0.0860860359389335
+  c     chr2  [13, 52]      + |         3  0.727463071467355
+  d     chr2  [14, 53]      - |         4  0.721389898099005
+  e     chr1  [15, 54]      - |         5 0.0752959551755339
+  f     chr1  [16, 55]      + |         6 0.0811852414626628
+  g     chr3  [17, 56]      + |         7  0.914472718490288
+  h     chr3  [18, 57]      + |         8    0.4749039048329
+  i     chr3  [19, 58]      - |         9  0.996819026768208
+  j     chr3  [20, 59]      - |        10  0.975726635428146
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1712,18 +1712,18 @@ gr1
 </code></pre>
 
 <pre><code>DataFrame with 10 rows and 2 columns
-       score          GC
-   &lt;integer&gt;   &lt;numeric&gt;
-1          1 0.486682077
-2          2 0.134117156
-3          3 0.035371185
-4          4 0.247030323
-5          5 0.214533089
-6          6 0.587903792
-7          7 0.058753388
-8          8 0.787744002
-9          9 0.004029304
-10        10 0.546321174
+       score         GC
+   &lt;integer&gt;  &lt;numeric&gt;
+1          1 0.50377588
+2          2 0.08608604
+3          3 0.72746307
+4          4 0.72138990
+5          5 0.07529596
+6          6 0.08118524
+7          7 0.91447272
+8          8 0.47490390
+9          9 0.99681903
+10        10 0.97572664
 </code></pre>
 
 </div>
@@ -1874,11 +1874,11 @@ GRL &lt;- GRangesList(&quot;Peak1&quot; = gr1, &quot;Peak2&quot; = gr2)
 </code></pre>
 
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                GC
-       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  a     chr1  [11, 50]      - |         1  0.48668207670562
-  e     chr1  [15, 54]      - |         5 0.214533089427277
-  f     chr1  [16, 55]      + |         6 0.587903791572899
+    seqnames    ranges strand |     score                 GC
+       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
+  a     chr1  [11, 50]      - |         1  0.503775882301852
+  e     chr1  [15, 54]      - |         5 0.0752959551755339
+  f     chr1  [16, 55]      + |         6 0.0811852414626628
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1945,13 +1945,13 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]
 </code></pre>
 
 <pre><code>GRanges object with 5 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                  GC
-       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;           &lt;numeric&gt;
-  f     chr1  [16, 55]      + |         6   0.587903791572899
-  i     chr3  [19, 58]      - |         9 0.00402930378913879
-  i     chr3  [19, 58]      - |         9 0.00402930378913879
-  j     chr3  [20, 59]      - |        10   0.546321173897013
-  j     chr3  [20, 59]      - |        10   0.546321173897013
+    seqnames    ranges strand |     score                 GC
+       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
+  f     chr1  [16, 55]      + |         6 0.0811852414626628
+  i     chr3  [19, 58]      - |         9  0.996819026768208
+  i     chr3  [19, 58]      - |         9  0.996819026768208
+  j     chr3  [20, 59]      - |        10  0.975726635428146
+  j     chr3  [20, 59]      - |        10  0.975726635428146
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1968,11 +1968,11 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]
 </code></pre>
 
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                  GC
-       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;           &lt;numeric&gt;
-  f     chr1  [16, 55]      + |         6   0.587903791572899
-  i     chr3  [19, 58]      - |         9 0.00402930378913879
-  j     chr3  [20, 59]      - |        10   0.546321173897013
+    seqnames    ranges strand |     score                 GC
+       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
+  f     chr1  [16, 55]      + |         6 0.0811852414626628
+  i     chr3  [19, 58]      - |         9  0.996819026768208
+  j     chr3  [20, 59]      - |        10  0.975726635428146
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1999,11 +1999,11 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]
 </code></pre>
 
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                  GC
-       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;           &lt;numeric&gt;
-  f     chr1  [16, 55]      + |         6   0.587903791572899
-  i     chr3  [19, 58]      - |         9 0.00402930378913879
-  j     chr3  [20, 59]      - |        10   0.546321173897013
+    seqnames    ranges strand |     score                 GC
+       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
+  f     chr1  [16, 55]      + |         6 0.0811852414626628
+  i     chr3  [19, 58]      - |         9  0.996819026768208
+  j     chr3  [20, 59]      - |        10  0.975726635428146
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -2146,7 +2146,7 @@ integer-Rle of length 59 with 8 runs
 <li>SAM/BAM - Sequence Alignment/Map format</li>
 <li>BED</li>
 <li><p>Wiggle/bedgraph</p></li>
-<li><p><a href="http://mrccsc.github.io/genomic_formats/">Genomic File Formats</a></p></li>
+<li><p><a href="https://lmsbioinformatics.github.io/LMS_genomic_formats/">Genomic File Formats</a></p></li>
 </ul>
 
 <p><b>FASTQ</b></p>

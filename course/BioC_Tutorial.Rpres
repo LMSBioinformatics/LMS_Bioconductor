@@ -2,7 +2,7 @@ Bioconductor Tutorial
 ========================================================
 css: Rpress.css
 author: MRC LMS Bioinformatics Core
-date:http://mrccsc.github.io/training.html
+date:https://lmsbioinformatics.github.io/MRCLMSBioinfo/LMStraining.html
 width: 1440
 height: 1100
 autosize: true
@@ -360,7 +360,7 @@ File formats in NGS
 - BED
 - Wiggle/bedgraph
 
-* [Genomic File Formats](http://mrccsc.github.io/genomic_formats/)
+* [Genomic File Formats](https://lmsbioinformatics.github.io/LMS_genomic_formats/)
 
 <b>FASTQ</b>
 ```{r, echo=TRUE, eval=FALSE, message=FALSE}
