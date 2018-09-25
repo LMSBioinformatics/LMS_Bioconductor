@@ -9,12 +9,12 @@
 
 .emphasized {
   font-family: 'Bitter', serif;
-  font-size: 0.5em;
+  font-size: 1em;
 }
 
 .smaller {
   font-family: 'Bitter', serif;
-  font-size: 0.75em;
+  font-size: 1em;
 }
 
 .noselect {
@@ -100,7 +100,7 @@ slides > slide {
     //@include background-size($brand-small-icon-size $brand-small-icon-size);
 
     &:before {
-      font-size: 12pt;
+      font-size: 14pt;
       content: $social-tags;
       position: absolute;
       bottom: $slide-top-bottom-padding / 2;
@@ -111,7 +111,7 @@ slides > slide {
       line-height: 1.9;
     }
     &:after {
-      font-size: 12pt;
+      font-size: 14pt;
       content: attr(data-slide-num) '/' attr(data-total-slides);
       position: absolute;
       bottom: $slide-top-bottom-padding / 2;

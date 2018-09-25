@@ -8,7 +8,7 @@ height: 1100
 autosize: true
 font-import: <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 font-family: 'Slabo 27px', serif;
-css:style.css
+<!-- css:style.css -->
 
 
 MRC LMS Training Resources
@@ -176,16 +176,16 @@ gr1
 GRanges object with 10 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                 GC
        <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  a     chr1  [11, 50]      - |         1  0.503775882301852
-  b     chr2  [12, 51]      + |         2 0.0860860359389335
-  c     chr2  [13, 52]      + |         3  0.727463071467355
-  d     chr2  [14, 53]      - |         4  0.721389898099005
-  e     chr1  [15, 54]      - |         5 0.0752959551755339
-  f     chr1  [16, 55]      + |         6 0.0811852414626628
-  g     chr3  [17, 56]      + |         7  0.914472718490288
-  h     chr3  [18, 57]      + |         8    0.4749039048329
-  i     chr3  [19, 58]      - |         9  0.996819026768208
-  j     chr3  [20, 59]      - |        10  0.975726635428146
+  a     chr1  [11, 50]      - |         1  0.143159778788686
+  b     chr2  [12, 51]      + |         2  0.845220821211115
+  c     chr2  [13, 52]      + |         3  0.726900060893968
+  d     chr2  [14, 53]      - |         4  0.797890555346385
+  e     chr1  [15, 54]      - |         5  0.932554259896278
+  f     chr1  [16, 55]      + |         6  0.269245354924351
+  g     chr3  [17, 56]      + |         7 0.0388953390065581
+  h     chr3  [18, 57]      + |         8  0.502887684619054
+  i     chr3  [19, 58]      - |         9  0.681715130340308
+  j     chr3  [20, 59]      - |        10  0.589060813188553
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -206,16 +206,16 @@ mcols(gr1)
 DataFrame with 10 rows and 2 columns
        score         GC
    <integer>  <numeric>
-1          1 0.50377588
-2          2 0.08608604
-3          3 0.72746307
-4          4 0.72138990
-5          5 0.07529596
-6          6 0.08118524
-7          7 0.91447272
-8          8 0.47490390
-9          9 0.99681903
-10        10 0.97572664
+1          1 0.14315978
+2          2 0.84522082
+3          3 0.72690006
+4          4 0.79789056
+5          5 0.93255426
+6          6 0.26924535
+7          7 0.03889534
+8          8 0.50288768
+9          9 0.68171513
+10        10 0.58906081
 ```
 
 Constructing GRanges object from data frame
@@ -364,11 +364,11 @@ gr1[seqnames(gr1)=="chr1"]
 
 ```
 GRanges object with 3 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  a     chr1  [11, 50]      - |         1  0.503775882301852
-  e     chr1  [15, 54]      - |         5 0.0752959551755339
-  f     chr1  [16, 55]      + |         6 0.0811852414626628
+    seqnames    ranges strand |     score                GC
+       <Rle> <IRanges>  <Rle> | <integer>         <numeric>
+  a     chr1  [11, 50]      - |         1 0.143159778788686
+  e     chr1  [15, 54]      - |         5 0.932554259896278
+  f     chr1  [16, 55]      + |         6 0.269245354924351
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -433,13 +433,13 @@ gr1[gr1_overlaps.m[,"queryHits"], ]
 
 ```
 GRanges object with 5 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  f     chr1  [16, 55]      + |         6 0.0811852414626628
-  i     chr3  [19, 58]      - |         9  0.996819026768208
-  i     chr3  [19, 58]      - |         9  0.996819026768208
-  j     chr3  [20, 59]      - |        10  0.975726635428146
-  j     chr3  [20, 59]      - |        10  0.975726635428146
+    seqnames    ranges strand |     score                GC
+       <Rle> <IRanges>  <Rle> | <integer>         <numeric>
+  f     chr1  [16, 55]      + |         6 0.269245354924351
+  i     chr3  [19, 58]      - |         9 0.681715130340308
+  i     chr3  [19, 58]      - |         9 0.681715130340308
+  j     chr3  [20, 59]      - |        10 0.589060813188553
+  j     chr3  [20, 59]      - |        10 0.589060813188553
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -456,11 +456,11 @@ subsetByOverlaps(gr1,gr2,ignore.strand=F)
 
 ```
 GRanges object with 3 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  f     chr1  [16, 55]      + |         6 0.0811852414626628
-  i     chr3  [19, 58]      - |         9  0.996819026768208
-  j     chr3  [20, 59]      - |        10  0.975726635428146
+    seqnames    ranges strand |     score                GC
+       <Rle> <IRanges>  <Rle> | <integer>         <numeric>
+  f     chr1  [16, 55]      + |         6 0.269245354924351
+  i     chr3  [19, 58]      - |         9 0.681715130340308
+  j     chr3  [20, 59]      - |        10 0.589060813188553
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -488,11 +488,11 @@ gr1[gr1 %over% gr2]
 
 ```
 GRanges object with 3 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  f     chr1  [16, 55]      + |         6 0.0811852414626628
-  i     chr3  [19, 58]      - |         9  0.996819026768208
-  j     chr3  [20, 59]      - |        10  0.975726635428146
+    seqnames    ranges strand |     score                GC
+       <Rle> <IRanges>  <Rle> | <integer>         <numeric>
+  f     chr1  [16, 55]      + |         6 0.269245354924351
+  i     chr3  [19, 58]      - |         9 0.681715130340308
+  j     chr3  [20, 59]      - |        10 0.589060813188553
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -1124,7 +1124,7 @@ other attached packages:
 loaded via a namespace (and not attached):
  [1] Rcpp_0.12.17           compiler_3.4.2         prettyunits_1.0.2     
  [4] progress_1.1.2         bitops_1.0-6           tools_3.4.2           
- [7] zlibbioc_1.24.0        digest_0.6.15          bit_1.1-12            
+ [7] zlibbioc_1.24.0        digest_0.6.15          bit_1.1-14            
 [10] evaluate_0.10.1        RSQLite_2.1.0          memoise_1.1.0         
 [13] lattice_0.20-35        pkgconfig_2.0.1        Matrix_1.2-14         
 [16] DBI_0.8                curl_3.2               GenomeInfoDbData_1.0.0

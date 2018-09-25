@@ -598,7 +598,7 @@ pre[data-lang="go"] {
 
 /* line 368, ../scss/default.scss */
 code {
-  font-size: 95%;
+  font-size: 125%;
   font-family: 'Source Code Pro', 'Courier New', monospace;
   color: black;
 }
