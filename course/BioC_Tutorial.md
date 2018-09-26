@@ -176,16 +176,16 @@ gr1
 GRanges object with 10 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                 GC
        <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  a     chr1  [11, 50]      - |         1  0.143159778788686
-  b     chr2  [12, 51]      + |         2  0.845220821211115
-  c     chr2  [13, 52]      + |         3  0.726900060893968
-  d     chr2  [14, 53]      - |         4  0.797890555346385
-  e     chr1  [15, 54]      - |         5  0.932554259896278
-  f     chr1  [16, 55]      + |         6  0.269245354924351
-  g     chr3  [17, 56]      + |         7 0.0388953390065581
-  h     chr3  [18, 57]      + |         8  0.502887684619054
-  i     chr3  [19, 58]      - |         9  0.681715130340308
-  j     chr3  [20, 59]      - |        10  0.589060813188553
+  a     chr1  [11, 50]      - |         1  0.513960068346933
+  b     chr2  [12, 51]      + |         2  0.465619113529101
+  c     chr2  [13, 52]      + |         3  0.417761223390698
+  d     chr2  [14, 53]      - |         4  0.130471102194861
+  e     chr1  [15, 54]      - |         5 0.0934471967630088
+  f     chr1  [16, 55]      + |         6  0.122208356624469
+  g     chr3  [17, 56]      + |         7  0.413014986086637
+  h     chr3  [18, 57]      + |         8   0.38778457744047
+  i     chr3  [19, 58]      - |         9  0.306864246027544
+  j     chr3  [20, 59]      - |        10  0.707418977748603
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -204,18 +204,18 @@ mcols(gr1)
 
 ```
 DataFrame with 10 rows and 2 columns
-       score         GC
-   <integer>  <numeric>
-1          1 0.14315978
-2          2 0.84522082
-3          3 0.72690006
-4          4 0.79789056
-5          5 0.93255426
-6          6 0.26924535
-7          7 0.03889534
-8          8 0.50288768
-9          9 0.68171513
-10        10 0.58906081
+       score        GC
+   <integer> <numeric>
+1          1 0.5139601
+2          2 0.4656191
+3          3 0.4177612
+4          4 0.1304711
+5          5 0.0934472
+6          6 0.1222084
+7          7 0.4130150
+8          8 0.3877846
+9          9 0.3068642
+10        10 0.7074190
 ```
 
 Constructing GRanges object from data frame
@@ -316,7 +316,9 @@ Operations on GenomicRanges
 
 Operations on GenomicRanges
 ========================================================
-![Operations on GenomicRanges](./GenomicRanges.jpg)
+<div align="center">
+<img src="./GenomicRanges.jpg" alt="GenomicRanges" height="700" width="1000">
+</div>
 
 
 Operations on GenomicRanges
@@ -354,6 +356,14 @@ width(gr1)
  [1] 40 40 40 40 40 40 40 40 40 40
 ```
 
+```r
+length(gr1)
+```
+
+```
+[1] 10
+```
+
 Operations on GenomicRanges
 ========================================================
 Subsetting GRanges
@@ -364,11 +374,11 @@ gr1[seqnames(gr1)=="chr1"]
 
 ```
 GRanges object with 3 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                GC
-       <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  a     chr1  [11, 50]      - |         1 0.143159778788686
-  e     chr1  [15, 54]      - |         5 0.932554259896278
-  f     chr1  [16, 55]      + |         6 0.269245354924351
+    seqnames    ranges strand |     score                 GC
+       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
+  a     chr1  [11, 50]      - |         1  0.513960068346933
+  e     chr1  [15, 54]      - |         5 0.0934471967630088
+  f     chr1  [16, 55]      + |         6  0.122208356624469
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -421,7 +431,7 @@ Hits object with 5 hits and 0 metadata columns:
 
 Output of findOverlaps is a 'Hits' object indicating which of the query and subject intervals overlap.
 
-Finding overlapping regions
+Finding overlapping regions - 1
 ========================================================
 Convert the 'Hits' object to 2 column matrix using <b>as.matrix()</b>. Values in the first column are indices of the query and values in second column are indices of the subject.
 
@@ -435,15 +445,36 @@ gr1[gr1_overlaps.m[,"queryHits"], ]
 GRanges object with 5 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.269245354924351
-  i     chr3  [19, 58]      - |         9 0.681715130340308
-  i     chr3  [19, 58]      - |         9 0.681715130340308
-  j     chr3  [20, 59]      - |        10 0.589060813188553
-  j     chr3  [20, 59]      - |        10 0.589060813188553
+  f     chr1  [16, 55]      + |         6 0.122208356624469
+  i     chr3  [19, 58]      - |         9 0.306864246027544
+  i     chr3  [19, 58]      - |         9 0.306864246027544
+  j     chr3  [20, 59]      - |        10 0.707418977748603
+  j     chr3  [20, 59]      - |        10 0.707418977748603
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
 
+Finding overlapping regions - 2 
+========================================================
+Or use *queryHits()*
+
+
+```r
+gr1[queryHits(gr1_overlaps)]
+```
+
+```
+GRanges object with 5 ranges and 2 metadata columns:
+    seqnames    ranges strand |     score                GC
+       <Rle> <IRanges>  <Rle> | <integer>         <numeric>
+  f     chr1  [16, 55]      + |         6 0.122208356624469
+  i     chr3  [19, 58]      - |         9 0.306864246027544
+  i     chr3  [19, 58]      - |         9 0.306864246027544
+  j     chr3  [20, 59]      - |        10 0.707418977748603
+  j     chr3  [20, 59]      - |        10 0.707418977748603
+  -------
+  seqinfo: 3 sequences from an unspecified genome; no seqlengths
+```
 
 Finding overlapping regions
 ========================================================
@@ -458,9 +489,9 @@ subsetByOverlaps(gr1,gr2,ignore.strand=F)
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.269245354924351
-  i     chr3  [19, 58]      - |         9 0.681715130340308
-  j     chr3  [20, 59]      - |        10 0.589060813188553
+  f     chr1  [16, 55]      + |         6 0.122208356624469
+  i     chr3  [19, 58]      - |         9 0.306864246027544
+  j     chr3  [20, 59]      - |        10 0.707418977748603
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -490,9 +521,9 @@ gr1[gr1 %over% gr2]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.269245354924351
-  i     chr3  [19, 58]      - |         9 0.681715130340308
-  j     chr3  [20, 59]      - |        10 0.589060813188553
+  f     chr1  [16, 55]      + |         6 0.122208356624469
+  i     chr3  [19, 58]      - |         9 0.306864246027544
+  j     chr3  [20, 59]      - |        10 0.707418977748603
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -1095,13 +1126,9 @@ sessionInfo()
 ```
 
 ```
-R version 3.4.2 (2017-09-28)
-Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS High Sierra 10.13.3
-
-Matrix products: default
-BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
+R version 3.3.3 (2017-03-06)
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Running under: OS X Yosemite 10.10.5
 
 locale:
 [1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
@@ -1111,28 +1138,25 @@ attached base packages:
 [8] methods   base     
 
 other attached packages:
- [1] biomaRt_2.34.2             GenomicFeatures_1.30.3    
- [3] org.Hs.eg.db_3.5.0         AnnotationDbi_1.40.0      
- [5] GenomicAlignments_1.14.2   SummarizedExperiment_1.8.1
- [7] DelayedArray_0.4.1         matrixStats_0.53.1        
- [9] Biobase_2.38.0             Rsamtools_1.30.0          
-[11] Biostrings_2.46.0          XVector_0.18.0            
-[13] GenomicRanges_1.30.3       GenomeInfoDb_1.14.0       
-[15] IRanges_2.12.0             S4Vectors_0.16.0          
-[17] BiocGenerics_0.24.0        knitr_1.20                
+ [1] biomaRt_2.30.0             GenomicFeatures_1.26.4    
+ [3] org.Hs.eg.db_3.3.0         AnnotationDbi_1.36.2      
+ [5] GenomicAlignments_1.10.1   SummarizedExperiment_1.4.0
+ [7] Biobase_2.34.0             Rsamtools_1.26.2          
+ [9] Biostrings_2.42.1          XVector_0.14.1            
+[11] GenomicRanges_1.26.4       GenomeInfoDb_1.10.3       
+[13] IRanges_2.8.2              S4Vectors_0.12.2          
+[15] BiocGenerics_0.20.0        knitr_1.15.20             
 
 loaded via a namespace (and not attached):
- [1] Rcpp_0.12.17           compiler_3.4.2         prettyunits_1.0.2     
- [4] progress_1.1.2         bitops_1.0-6           tools_3.4.2           
- [7] zlibbioc_1.24.0        digest_0.6.15          bit_1.1-14            
-[10] evaluate_0.10.1        RSQLite_2.1.0          memoise_1.1.0         
-[13] lattice_0.20-35        pkgconfig_2.0.1        Matrix_1.2-14         
-[16] DBI_0.8                curl_3.2               GenomeInfoDbData_1.0.0
-[19] rtracklayer_1.38.3     httr_1.3.1             stringr_1.3.0         
-[22] bit64_0.9-7            grid_3.4.2             R6_2.2.2              
-[25] XML_3.98-1.11          RMySQL_0.10.14         BiocParallel_1.12.0   
-[28] blob_1.1.1             magrittr_1.5           assertthat_0.2.0      
-[31] stringi_1.2.2          RCurl_1.95-4.10       
+ [1] Rcpp_0.12.14       pillar_1.2.2       bitops_1.0-6      
+ [4] tools_3.3.3        zlibbioc_1.20.0    digest_0.6.13     
+ [7] bit_1.1-12         evaluate_0.10.1    RSQLite_2.0       
+[10] memoise_1.1.0      tibble_1.4.2       lattice_0.20-34   
+[13] pkgconfig_2.0.1    rlang_0.2.0        Matrix_1.2-8      
+[16] DBI_0.7            rtracklayer_1.34.2 stringr_1.2.0     
+[19] bit64_0.9-7        grid_3.3.3         XML_3.98-1.9      
+[22] BiocParallel_1.8.1 blob_1.1.0         magrittr_1.5      
+[25] stringi_1.1.6      RCurl_1.95-4.8    
 ```
 
 Time for Exercises!

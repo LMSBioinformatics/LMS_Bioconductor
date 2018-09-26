@@ -232,7 +232,9 @@ Operations on GenomicRanges
 
 Operations on GenomicRanges
 ========================================================
-![Operations on GenomicRanges](./GenomicRanges.jpg)
+<div align="center">
+<img src="./GenomicRanges.jpg" alt="GenomicRanges" height="700" width="1000">
+</div>
 
 
 Operations on GenomicRanges
@@ -241,6 +243,7 @@ Operations on GenomicRanges
 head(ranges(gr1))
 start(gr1)
 width(gr1)
+length(gr1)
 ```
 
 Operations on GenomicRanges
@@ -269,7 +272,7 @@ gr1_overlaps
 
 Output of findOverlaps is a 'Hits' object indicating which of the query and subject intervals overlap.
 
-Finding overlapping regions
+Finding overlapping regions - 1
 ========================================================
 Convert the 'Hits' object to 2 column matrix using <b>as.matrix()</b>. Values in the first column are indices of the query and values in second column are indices of the subject.
 
@@ -278,6 +281,13 @@ gr1_overlaps.m <- as.matrix(gr1_overlaps)
 gr1[gr1_overlaps.m[,"queryHits"], ]
 ```
 
+Finding overlapping regions - 2 
+========================================================
+Or use *queryHits()*
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE}
+gr1[queryHits(gr1_overlaps)]
+```
 
 Finding overlapping regions
 ========================================================
