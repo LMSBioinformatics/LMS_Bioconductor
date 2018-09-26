@@ -281,12 +281,20 @@ gr1_overlaps.m <- as.matrix(gr1_overlaps)
 gr1[gr1_overlaps.m[,"queryHits"], ]
 ```
 
-Finding overlapping regions - 2 
+Finding overlapping regions - 2.1
 ========================================================
 Or use *queryHits()*
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE}
 gr1[queryHits(gr1_overlaps)]
+```
+
+Finding overlapping regions - 2.2
+========================================================
+Or use *queryHits()*
+
+```{r, echo=TRUE, eval=TRUE, message=FALSE}
+gr1[unique(queryHits(gr1_overlaps))]
 ```
 
 Finding overlapping regions
