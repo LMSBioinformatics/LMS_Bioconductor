@@ -11,15 +11,6 @@ font-family: 'Slabo 27px', serif;
 <!-- css:style.css -->
 
 
-MRC LMS Training Resources
-========================================================
-* [Reproducible R](https://lmsbioinformatics.github.io/LMS_Reproducible-R/)
-* [Intermediate R - Data analysis sand Visualisation](https://lmsbioinformatics.github.io/LMS_r-intermediate/)
-* [Statistics in R](https://lmsbioinformatics.github.io/LMS_StatisticsInR/)
-* [Genomic File Formats](https://lmsbioinformatics.github.io/LMS_genomic_formats/)
-* [ChIP-seq (short)](https://lmsbioinformatics.github.io/LMS_ChIPseq_short/)
-* [RNA-seq (short)](https://lmsbioinformatics.github.io/LMS_RNAseq_short/)
-
 Overview
 ========================================================
 
@@ -55,26 +46,45 @@ www.bioconductor.org
 ![BioC webpage](./BioC.png)
 
 
-Bioconductor Release 3.7
+Bioconductor Release 3.9 - it works with R version 3.6.0
 ========================================================
-- Software (1560)
+
+- Software (1741)
+
     + Provides implementation of analysis methods
-- AnnotationData (919)
+    
+- AnnotationData (948)
+
     + mapping between microarray probe, gene, pathway, gene ontology, homology and other annotations
     + Representations of GO, KEGG and other annotations, and can easily access NCBI, Biomart, UCSC and other sources
-- ExperimentData (342)
+    
+- ExperimentData (371)
+
     + code, data and documentation for specific experiments or projects
-- Workflows (21)
+    
+- Workflows (27)
+
     + Common analysis work flows for genomics data
 
 Installating BioC Packages
 ========================================================
-Installing & Using a package:
+
+Installing & Using a package for R version < 3.5.0 , i.e. R.3.4.0:
 
 
 ```r
 source("http://bioconductor.org/biocLite.R")
 biocLite("GenomicRanges")
+library("GenomicRanges")
+```
+
+Installing & Using a package for R version after 3.5.0, i.e. R.3.6.0:
+
+
+```r
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("GenomicRanges")
 library("GenomicRanges")
 ```
 
@@ -176,16 +186,16 @@ gr1
 GRanges object with 10 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                 GC
        <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  a     chr1  [11, 50]      - |         1  0.357535615330562
-  b     chr2  [12, 51]      + |         2 0.0432504068594426
-  c     chr2  [13, 52]      + |         3  0.299904772778973
-  d     chr2  [14, 53]      - |         4  0.380865195533261
-  e     chr1  [15, 54]      - |         5  0.964650477282703
-  f     chr1  [16, 55]      + |         6  0.251177051803097
-  g     chr3  [17, 56]      + |         7 0.0616627184208483
-  h     chr3  [18, 57]      + |         8  0.895349443424493
-  i     chr3  [19, 58]      - |         9  0.183201016159728
-  j     chr3  [20, 59]      - |        10  0.404116752091795
+  a     chr1     11-50      - |         1  0.878439399879426
+  b     chr2     12-51      + |         2  0.333382624201477
+  c     chr2     13-52      + |         3  0.712291674688458
+  d     chr2     14-53      - |         4 0.0917815216816962
+  e     chr1     15-54      - |         5  0.957464572507888
+  f     chr1     16-55      + |         6  0.302972923498601
+  g     chr3     17-56      + |         7  0.928768997779116
+  h     chr3     18-57      + |         8  0.750826743431389
+  i     chr3     19-58      - |         9  0.740013303002343
+  j     chr3     20-59      - |        10  0.115212131524459
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -204,18 +214,18 @@ mcols(gr1)
 
 ```
 DataFrame with 10 rows and 2 columns
-       score         GC
-   <integer>  <numeric>
-1          1 0.35753562
-2          2 0.04325041
-3          3 0.29990477
-4          4 0.38086520
-5          5 0.96465048
-6          6 0.25117705
-7          7 0.06166272
-8          8 0.89534944
-9          9 0.18320102
-10        10 0.40411675
+      score                 GC
+  <integer>          <numeric>
+a         1  0.878439399879426
+b         2  0.333382624201477
+c         3  0.712291674688458
+d         4 0.0917815216816962
+e         5  0.957464572507888
+f         6  0.302972923498601
+g         7  0.928768997779116
+h         8  0.750826743431389
+i         9  0.740013303002343
+j        10  0.115212131524459
 ```
 
 Constructing GRanges object from data frame
@@ -223,7 +233,7 @@ Constructing GRanges object from data frame
 
 
 ```r
-mm9genes <- read.table("mm9Genes.txt",sep="\t",header=T)
+mm9genes <- read.table("./data/mm9Genes.txt",sep="\t",header=T)
 head(mm9genes)
 ```
 
@@ -258,14 +268,14 @@ head(mm9genes.GR)
 
 ```
 GRanges object with 6 ranges and 2 metadata columns:
-      seqnames                 ranges strand |              ENSID
-         <Rle>              <IRanges>  <Rle> |           <factor>
-  [1]     chr9 [105729415, 105731415]      - | ENSMUSG00000043719
-  [2]    chr18 [ 43636450,  43638450]      - | ENSMUSG00000043424
-  [3]     chr7 [ 70356455,  70358455]      - | ENSMUSG00000030525
-  [4]     chrX [100818093, 100820093]      - | ENSMUSG00000086370
-  [5]    chr12 [ 82881157,  82883157]      - | ENSMUSG00000042724
-  [6]     chr7 [152124774, 152126774]      - | ENSMUSG00000070348
+      seqnames              ranges strand |              ENSID
+         <Rle>           <IRanges>  <Rle> |           <factor>
+  [1]     chr9 105729415-105731415      - | ENSMUSG00000043719
+  [2]    chr18   43636450-43638450      - | ENSMUSG00000043424
+  [3]     chr7   70356455-70358455      - | ENSMUSG00000030525
+  [4]     chrX 100818093-100820093      - | ENSMUSG00000086370
+  [5]    chr12   82881157-82883157      - | ENSMUSG00000042724
+  [6]     chr7 152124774-152126774      - | ENSMUSG00000070348
              Symbol
            <factor>
   [1]        Col6a6
@@ -278,6 +288,77 @@ GRanges object with 6 ranges and 2 metadata columns:
   seqinfo: 21 sequences from an unspecified genome; no seqlengths
 ```
 
+
+Please try to use makeGRangesFromDataFrame to create a GRanges object from mm9genes (1/2)
+========================================================
+
+```r
+?makeGRangesFromDataFrame
+```
+
+### Usage
+    makeGRangesFromDataFrame(df,
+                         keep.extra.columns=FALSE,
+                         ignore.strand=FALSE,
+                         seqinfo=NULL,
+                         seqnames.field=c("seqnames", "seqname",
+                                          "chromosome", "chrom",
+                                          "chr", "chromosome_name",
+                                          "seqid"),
+                         start.field="start",
+                         end.field=c("end", "stop"),
+                         strand.field="strand",
+                         starts.in.df.are.0based=FALSE)
+
+Please try to use makeGRangesFromDataFrame to create a GRanges object from mm9genes (2/2)
+========================================================
+
+```r
+mm9genes.GR2 <- makeGRangesFromDataFrame(mm9genes)
+head(mm9genes.GR2)
+```
+
+```
+GRanges object with 6 ranges and 0 metadata columns:
+      seqnames              ranges strand
+         <Rle>           <IRanges>  <Rle>
+  [1]     chr9 105729415-105731415      -
+  [2]    chr18   43636450-43638450      -
+  [3]     chr7   70356455-70358455      -
+  [4]     chrX 100818093-100820093      -
+  [5]    chr12   82881157-82883157      -
+  [6]     chr7 152124774-152126774      -
+  -------
+  seqinfo: 21 sequences from an unspecified genome; no seqlengths
+```
+
+```r
+mm9genes.GR3 <- makeGRangesFromDataFrame(mm9genes,
+                                         keep.extra.columns=T)
+head(mm9genes.GR3)
+```
+
+```
+GRanges object with 6 ranges and 2 metadata columns:
+      seqnames              ranges strand |                ens
+         <Rle>           <IRanges>  <Rle> |           <factor>
+  [1]     chr9 105729415-105731415      - | ENSMUSG00000043719
+  [2]    chr18   43636450-43638450      - | ENSMUSG00000043424
+  [3]     chr7   70356455-70358455      - | ENSMUSG00000030525
+  [4]     chrX 100818093-100820093      - | ENSMUSG00000086370
+  [5]    chr12   82881157-82883157      - | ENSMUSG00000042724
+  [6]     chr7 152124774-152126774      - | ENSMUSG00000070348
+             Symbol
+           <factor>
+  [1]        Col6a6
+  [2]        Gm9781
+  [3]        Chrna7
+  [4] B230206F22Rik
+  [5]        Map3k9
+  [6]         Ccnd1
+  -------
+  seqinfo: 21 sequences from an unspecified genome; no seqlengths
+```
 
 
 GenomicRangesList
@@ -376,9 +457,9 @@ gr1[seqnames(gr1)=="chr1"]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  a     chr1  [11, 50]      - |         1 0.357535615330562
-  e     chr1  [15, 54]      - |         5 0.964650477282703
-  f     chr1  [16, 55]      + |         6 0.251177051803097
+  a     chr1     11-50      - |         1 0.878439399879426
+  e     chr1     15-54      - |         5 0.957464572507888
+  f     chr1     16-55      + |         6 0.302972923498601
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -393,12 +474,12 @@ reduce(gr1)
 GRanges object with 6 ranges and 0 metadata columns:
       seqnames    ranges strand
          <Rle> <IRanges>  <Rle>
-  [1]     chr1  [16, 55]      +
-  [2]     chr1  [11, 54]      -
-  [3]     chr2  [12, 52]      +
-  [4]     chr2  [14, 53]      -
-  [5]     chr3  [17, 57]      +
-  [6]     chr3  [19, 59]      -
+  [1]     chr1     16-55      +
+  [2]     chr1     11-54      -
+  [3]     chr2     12-52      +
+  [4]     chr2     14-53      -
+  [5]     chr3     17-57      +
+  [6]     chr3     19-59      -
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -445,11 +526,11 @@ gr1[gr1_overlaps.m[,"queryHits"], ]
 GRanges object with 5 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.251177051803097
-  i     chr3  [19, 58]      - |         9 0.183201016159728
-  i     chr3  [19, 58]      - |         9 0.183201016159728
-  j     chr3  [20, 59]      - |        10 0.404116752091795
-  j     chr3  [20, 59]      - |        10 0.404116752091795
+  f     chr1     16-55      + |         6 0.302972923498601
+  i     chr3     19-58      - |         9 0.740013303002343
+  i     chr3     19-58      - |         9 0.740013303002343
+  j     chr3     20-59      - |        10 0.115212131524459
+  j     chr3     20-59      - |        10 0.115212131524459
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -467,11 +548,11 @@ gr1[queryHits(gr1_overlaps)]
 GRanges object with 5 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.251177051803097
-  i     chr3  [19, 58]      - |         9 0.183201016159728
-  i     chr3  [19, 58]      - |         9 0.183201016159728
-  j     chr3  [20, 59]      - |        10 0.404116752091795
-  j     chr3  [20, 59]      - |        10 0.404116752091795
+  f     chr1     16-55      + |         6 0.302972923498601
+  i     chr3     19-58      - |         9 0.740013303002343
+  i     chr3     19-58      - |         9 0.740013303002343
+  j     chr3     20-59      - |        10 0.115212131524459
+  j     chr3     20-59      - |        10 0.115212131524459
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -489,9 +570,9 @@ gr1[unique(queryHits(gr1_overlaps))]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.251177051803097
-  i     chr3  [19, 58]      - |         9 0.183201016159728
-  j     chr3  [20, 59]      - |        10 0.404116752091795
+  f     chr1     16-55      + |         6 0.302972923498601
+  i     chr3     19-58      - |         9 0.740013303002343
+  j     chr3     20-59      - |        10 0.115212131524459
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -509,9 +590,9 @@ subsetByOverlaps(gr1,gr2,ignore.strand=F)
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.251177051803097
-  i     chr3  [19, 58]      - |         9 0.183201016159728
-  j     chr3  [20, 59]      - |        10 0.404116752091795
+  f     chr1     16-55      + |         6 0.302972923498601
+  i     chr3     19-58      - |         9 0.740013303002343
+  j     chr3     20-59      - |        10 0.115212131524459
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -541,9 +622,9 @@ gr1[gr1 %over% gr2]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1  [16, 55]      + |         6 0.251177051803097
-  i     chr3  [19, 58]      - |         9 0.183201016159728
-  j     chr3  [20, 59]      - |        10 0.404116752091795
+  f     chr1     16-55      + |         6 0.302972923498601
+  i     chr3     19-58      - |         9 0.740013303002343
+  j     chr3     20-59      - |        10 0.115212131524459
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -725,7 +806,7 @@ Reading Sequence alignments (BAM/SAM)
 ```r
 library("Rsamtools")
 BamFile <- system.file("extdata", "ex1.bam", package="Rsamtools")
-which <- RangesList(seq1=IRanges(1000, 2000),seq2=IRanges(c(100, 1000), c(1000, 2000)))
+which <- IRangesList(seq1=IRanges(1000, 2000),seq2=IRanges(c(100, 1000), c(1000, 2000)))
 what <- c("rname", "strand", "pos", "qwidth", "seq")
 param <- ScanBamParam(which=which, what=what)
 bamReads <-  scanBam(BamFile, param=param)
@@ -755,12 +836,12 @@ Reading Sequence alignments (BAM/SAM)
 
 ```r
 # Constructor
-ScanBamParam(flag = scanBamFlag(), what = character(0), which)
+ScanBamParam(flag = scanBamFlag(), what = scanBamWhat(), which=which)
 
 # Constructor helpers
 scanBamFlag(isPaired = NA, isProperPair = NA, isUnmappedQuery = NA, 
     hasUnmappedMate = NA, isMinusStrand = NA, isMateMinusStrand = NA,
-    isFirstMateRead = NA, isSecondMateRead = NA, isNotPrimaryRead = NA,
+    isFirstMateRead = NA, isSecondMateRead = NA, isSecondaryAlignment = NA,
     isNotPassingQualityControls = NA, isDuplicate = NA)
 ```
 
@@ -785,7 +866,7 @@ Reading Sequence alignments (BAM/SAM)
 We can also customise which regions to read
 
 ```r
-region <- RangesList(seq1=IRanges(1000, 2000),seq2=IRanges(1000, 2000))
+region <- IRangesList(seq1=IRanges(1000, 2000),seq2=IRanges(1000, 2000))
 param1 <- ScanBamParam(what=c("rname", "pos", "cigar","qwidth"),which=region)
 SampleAlign1 <- readGAlignments(BamFile,param=param1)
 ```
@@ -900,9 +981,9 @@ head(keys(org.Hs.eg.db, keytype="SYMBOL"))
 We can extract other annotations for a particular identifier using <b>select</b> function
 
 ```r
-select(org.Hs.eg.db, keys = "A1BG", keytype = "SYMBOL", columns = c("SYMBOL", "GENENAME", "CHR") )
-  SYMBOL               GENENAME CHR
-1   A1BG alpha-1-B glycoprotein  19
+select(org.Hs.eg.db, keys = "A1BG", keytype = "SYMBOL", columns = c("SYMBOL", "GENENAME", "ENSEMBL") )
+  SYMBOL               GENENAME         ENSEMBL
+1   A1BG alpha-1-B glycoprotein ENSG00000121410
 ```
 
 
@@ -933,6 +1014,20 @@ Annotating results - Example
 
 ```r
 SYM <- select(org.Hs.eg.db, keys = rownames(resultTable), keytype = "ENTREZID", columns = "SYMBOL")
+head(SYM)
+```
+
+```
+   ENTREZID       SYMBOL
+1 100418920     ACTG1P13
+2 100419779 LOC100419779
+3 100271867      MPVQTL1
+4 100287169         <NA>
+5 100287735      TTTY13B
+6 100421986         <NA>
+```
+
+```r
 NewResult <- merge(resultTable,SYM,by.x=0,by.y=1)
 head(NewResult)
 ```
@@ -963,6 +1058,7 @@ TranscriptDB (TxDb) packages
 
 We will explore TxDb package for Mouse mm9 genome from UCSC. We will first install the package and load in to our current working space.
 
+To install this package, before R < (version "3.5") and enter:
 
 
 ```r
@@ -970,7 +1066,15 @@ source("http://bioconductor.org/biocLite.R")
 biocLite("TxDb.Mmusculus.UCSC.mm9.knownGene")
 ```
 
+To install this package, start R (version "3.6") and enter:
 
+
+```r
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("TxDb.Mmusculus.UCSC.mm9.knownGene")
+```
 
 TranscriptDb - TxDb.Mmusculus.UCSC.mm9.knownGene
 ========================================================
@@ -1012,20 +1116,20 @@ Most common operations performed on TxDb objects are retrieving exons, transcrip
 TranscriptRanges <- transcripts(txdb)
 TranscriptRanges[1:3]
 GRanges object with 3 ranges and 2 metadata columns:
-      seqnames             ranges strand |     tx_id     tx_name
-         <Rle>          <IRanges>  <Rle> | <integer> <character>
-  [1]     chr1 [4797974, 4832908]      + |         1  uc007afg.1
-  [2]     chr1 [4797974, 4836816]      + |         2  uc007afh.1
-  [3]     chr1 [4847775, 4887990]      + |         3  uc007afi.2
+      seqnames          ranges strand |     tx_id     tx_name
+         <Rle>       <IRanges>  <Rle> | <integer> <character>
+  [1]     chr1 4797974-4832908      + |         1  uc007afg.1
+  [2]     chr1 4797974-4836816      + |         2  uc007afh.1
+  [3]     chr1 4847775-4887990      + |         3  uc007afi.2
   -------
   seqinfo: 35 sequences (1 circular) from mm9 genome
 ExonRanges <- exons(txdb)
 ExonRanges[1:2]
 GRanges object with 2 ranges and 1 metadata column:
-      seqnames             ranges strand |   exon_id
-         <Rle>          <IRanges>  <Rle> | <integer>
-  [1]     chr1 [4797974, 4798063]      + |         1
-  [2]     chr1 [4798536, 4798567]      + |         2
+      seqnames          ranges strand |   exon_id
+         <Rle>       <IRanges>  <Rle> | <integer>
+  [1]     chr1 4797974-4798063      + |         1
+  [2]     chr1 4798536-4798567      + |         2
   -------
   seqinfo: 35 sequences (1 circular) from mm9 genome
 ```
@@ -1043,14 +1147,14 @@ Transcripts[1:2]
 GRangesList object of length 2:
 $100009600 
 GRanges object with 1 range and 2 metadata columns:
-      seqnames               ranges strand |     tx_id     tx_name
-         <Rle>            <IRanges>  <Rle> | <integer> <character>
-  [1]     chr9 [20866837, 20872369]      - |     28943  uc009veu.1
+      seqnames            ranges strand |     tx_id     tx_name
+         <Rle>         <IRanges>  <Rle> | <integer> <character>
+  [1]     chr9 20866837-20872369      - |     28943  uc009veu.1
 
 $100009609 
 GRanges object with 1 range and 2 metadata columns:
-      seqnames               ranges strand | tx_id    tx_name
-  [1]     chr7 [92088679, 92112519]      - | 23717 uc012fog.1
+      seqnames            ranges strand | tx_id    tx_name
+  [1]     chr7 92088679-92112519      - | 23717 uc012fog.1
 
 -------
 seqinfo: 35 sequences (1 circular) from mm9 genome
@@ -1070,8 +1174,8 @@ USCmm9KnownGene <- makeTxDbFromUCSC(genome = "mm9", tablename = "knownGene")
 Save the annotation object and label them appropriately to facilitate reproducible research:
 
 ```r
-saveDb(txdb,file="Mouse_ucsc_mm9_20180919.sqlite")
-txdb <- loadDb("Mouse_ucsc_mm9_20180919.sqlite")
+saveDb(txdb,file="Mouse_ucsc_mm9_20190919.sqlite")
+txdb <- loadDb("Mouse_ucsc_mm9_20190919.sqlite")
 ```
 
 Another way of creating TxDb: </b>makeTxDbFromGFF()</b>
@@ -1099,7 +1203,7 @@ marts[1,]
 
 ```
                biomart          version
-1 ENSEMBL_MART_ENSEMBL Ensembl Genes 93
+1 ENSEMBL_MART_ENSEMBL Ensembl Genes 97
 ```
 
 ```r
@@ -1146,9 +1250,13 @@ sessionInfo()
 ```
 
 ```
-R version 3.3.3 (2017-03-06)
-Platform: x86_64-apple-darwin13.4.0 (64-bit)
-Running under: OS X Yosemite 10.10.5
+R version 3.6.1 (2019-07-05)
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+Running under: macOS High Sierra 10.13.6
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
 
 locale:
 [1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
@@ -1158,25 +1266,41 @@ attached base packages:
 [8] methods   base     
 
 other attached packages:
- [1] biomaRt_2.30.0             GenomicFeatures_1.26.4    
- [3] org.Hs.eg.db_3.3.0         AnnotationDbi_1.36.2      
- [5] GenomicAlignments_1.10.1   SummarizedExperiment_1.4.0
- [7] Biobase_2.34.0             Rsamtools_1.26.2          
- [9] Biostrings_2.42.1          XVector_0.14.1            
-[11] GenomicRanges_1.26.4       GenomeInfoDb_1.10.3       
-[13] IRanges_2.8.2              S4Vectors_0.12.2          
-[15] BiocGenerics_0.20.0        knitr_1.15.20             
+ [1] biomaRt_2.40.4                         
+ [2] TxDb.Mmusculus.UCSC.mm9.knownGene_3.2.2
+ [3] GenomicFeatures_1.36.4                 
+ [4] org.Hs.eg.db_3.8.2                     
+ [5] AnnotationDbi_1.46.1                   
+ [6] GenomicAlignments_1.20.1               
+ [7] SummarizedExperiment_1.14.1            
+ [8] DelayedArray_0.10.0                    
+ [9] BiocParallel_1.18.1                    
+[10] matrixStats_0.54.0                     
+[11] Biobase_2.44.0                         
+[12] Rsamtools_2.0.0                        
+[13] Biostrings_2.52.0                      
+[14] XVector_0.24.0                         
+[15] GenomicRanges_1.36.0                   
+[16] GenomeInfoDb_1.20.0                    
+[17] IRanges_2.18.1                         
+[18] S4Vectors_0.22.0                       
+[19] BiocGenerics_0.30.0                    
+[20] knitr_1.24                             
 
 loaded via a namespace (and not attached):
- [1] Rcpp_0.12.14       pillar_1.2.2       bitops_1.0-6      
- [4] tools_3.3.3        zlibbioc_1.20.0    digest_0.6.13     
- [7] bit_1.1-12         evaluate_0.10.1    RSQLite_2.0       
-[10] memoise_1.1.0      tibble_1.4.2       lattice_0.20-34   
-[13] pkgconfig_2.0.1    rlang_0.2.0        Matrix_1.2-8      
-[16] DBI_0.7            rtracklayer_1.34.2 stringr_1.2.0     
-[19] bit64_0.9-7        grid_3.3.3         XML_3.98-1.9      
-[22] BiocParallel_1.8.1 blob_1.1.0         magrittr_1.5      
-[25] stringi_1.1.6      RCurl_1.95-4.8    
+ [1] Rcpp_1.0.2             compiler_3.6.1         pillar_1.4.2          
+ [4] prettyunits_1.0.2      progress_1.2.2         bitops_1.0-6          
+ [7] tools_3.6.1            zlibbioc_1.30.0        digest_0.6.20         
+[10] zeallot_0.1.0          bit_1.1-14             memoise_1.1.0         
+[13] evaluate_0.14          RSQLite_2.1.2          tibble_2.1.3          
+[16] lattice_0.20-38        pkgconfig_2.0.2        rlang_0.4.0           
+[19] Matrix_1.2-17          DBI_1.0.0              curl_4.0              
+[22] xfun_0.9               GenomeInfoDbData_1.2.1 rtracklayer_1.44.2    
+[25] httr_1.4.1             stringr_1.4.0          hms_0.5.0             
+[28] vctrs_0.2.0            bit64_0.9-7            grid_3.6.1            
+[31] R6_2.4.0               XML_3.98-1.20          blob_1.2.0            
+[34] magrittr_1.5           backports_1.1.4        assertthat_0.2.1      
+[37] stringi_1.4.3          RCurl_1.95-4.12        crayon_1.3.4          
 ```
 
 Time for Exercises!
