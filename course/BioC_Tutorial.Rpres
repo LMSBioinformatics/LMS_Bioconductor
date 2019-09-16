@@ -681,7 +681,7 @@ GenomicFeatures also provides functions to create TxDb objects directly from UCS
 
 ```{r,  echo=TRUE, eval=FALSE}
 library(GenomicFeatures)
-txdb <- makeTxDbFromUCSC(genome = "mm9", tablename = "knownGene")
+USCmm9KnownGene <- makeTxDbFromUCSC(genome = "mm9", tablename = "knownGene")
 ```
 
 
@@ -727,8 +727,8 @@ USCmm9KnownGene <- makeTxDbFromUCSC(genome = "mm9", tablename = "knownGene")
 
 Save the annotation object and label them appropriately to facilitate reproducible research:
 ```{r, echo=TRUE, eval=F,  message=FALSE, results='hide'}
-saveDb(txdb,file="Mouse_ucsc_mm9_20190919.sqlite")
-txdb <- loadDb("Mouse_ucsc_mm9_20190919.sqlite")
+saveDb(USCmm9KnownGene,file="Mouse_ucsc_mm9_20190919.sqlite")
+USCmm9KnownGene <- loadDb("Mouse_ucsc_mm9_20190919.sqlite")
 ```
 
 Another way of creating TxDb: </b>makeTxDbFromGFF()</b>

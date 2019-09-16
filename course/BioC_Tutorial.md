@@ -184,18 +184,18 @@ gr1
 
 ```
 GRanges object with 10 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                 GC
-       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
-  a     chr1     11-50      - |         1  0.878439399879426
-  b     chr2     12-51      + |         2  0.333382624201477
-  c     chr2     13-52      + |         3  0.712291674688458
-  d     chr2     14-53      - |         4 0.0917815216816962
-  e     chr1     15-54      - |         5  0.957464572507888
-  f     chr1     16-55      + |         6  0.302972923498601
-  g     chr3     17-56      + |         7  0.928768997779116
-  h     chr3     18-57      + |         8  0.750826743431389
-  i     chr3     19-58      - |         9  0.740013303002343
-  j     chr3     20-59      - |        10  0.115212131524459
+    seqnames    ranges strand |     score                GC
+       <Rle> <IRanges>  <Rle> | <integer>         <numeric>
+  a     chr1     11-50      - |         1 0.687342862365767
+  b     chr2     12-51      + |         2 0.454601373523474
+  c     chr2     13-52      + |         3  0.95821252069436
+  d     chr2     14-53      - |         4 0.654869572026655
+  e     chr1     15-54      - |         5 0.896015138365328
+  f     chr1     16-55      + |         6 0.778833706863225
+  g     chr3     17-56      + |         7 0.254087912384421
+  h     chr3     18-57      + |         8 0.609995795879513
+  i     chr3     19-58      - |         9 0.452641693642363
+  j     chr3     20-59      - |        10 0.982892949134111
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -214,18 +214,18 @@ mcols(gr1)
 
 ```
 DataFrame with 10 rows and 2 columns
-      score                 GC
-  <integer>          <numeric>
-a         1  0.878439399879426
-b         2  0.333382624201477
-c         3  0.712291674688458
-d         4 0.0917815216816962
-e         5  0.957464572507888
-f         6  0.302972923498601
-g         7  0.928768997779116
-h         8  0.750826743431389
-i         9  0.740013303002343
-j        10  0.115212131524459
+      score                GC
+  <integer>         <numeric>
+a         1 0.687342862365767
+b         2 0.454601373523474
+c         3  0.95821252069436
+d         4 0.654869572026655
+e         5 0.896015138365328
+f         6 0.778833706863225
+g         7 0.254087912384421
+h         8 0.609995795879513
+i         9 0.452641693642363
+j        10 0.982892949134111
 ```
 
 Constructing GRanges object from data frame
@@ -457,9 +457,9 @@ gr1[seqnames(gr1)=="chr1"]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  a     chr1     11-50      - |         1 0.878439399879426
-  e     chr1     15-54      - |         5 0.957464572507888
-  f     chr1     16-55      + |         6 0.302972923498601
+  a     chr1     11-50      - |         1 0.687342862365767
+  e     chr1     15-54      - |         5 0.896015138365328
+  f     chr1     16-55      + |         6 0.778833706863225
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -526,11 +526,11 @@ gr1[gr1_overlaps.m[,"queryHits"], ]
 GRanges object with 5 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1     16-55      + |         6 0.302972923498601
-  i     chr3     19-58      - |         9 0.740013303002343
-  i     chr3     19-58      - |         9 0.740013303002343
-  j     chr3     20-59      - |        10 0.115212131524459
-  j     chr3     20-59      - |        10 0.115212131524459
+  f     chr1     16-55      + |         6 0.778833706863225
+  i     chr3     19-58      - |         9 0.452641693642363
+  i     chr3     19-58      - |         9 0.452641693642363
+  j     chr3     20-59      - |        10 0.982892949134111
+  j     chr3     20-59      - |        10 0.982892949134111
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -548,11 +548,11 @@ gr1[queryHits(gr1_overlaps)]
 GRanges object with 5 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1     16-55      + |         6 0.302972923498601
-  i     chr3     19-58      - |         9 0.740013303002343
-  i     chr3     19-58      - |         9 0.740013303002343
-  j     chr3     20-59      - |        10 0.115212131524459
-  j     chr3     20-59      - |        10 0.115212131524459
+  f     chr1     16-55      + |         6 0.778833706863225
+  i     chr3     19-58      - |         9 0.452641693642363
+  i     chr3     19-58      - |         9 0.452641693642363
+  j     chr3     20-59      - |        10 0.982892949134111
+  j     chr3     20-59      - |        10 0.982892949134111
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -570,9 +570,9 @@ gr1[unique(queryHits(gr1_overlaps))]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1     16-55      + |         6 0.302972923498601
-  i     chr3     19-58      - |         9 0.740013303002343
-  j     chr3     20-59      - |        10 0.115212131524459
+  f     chr1     16-55      + |         6 0.778833706863225
+  i     chr3     19-58      - |         9 0.452641693642363
+  j     chr3     20-59      - |        10 0.982892949134111
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -590,9 +590,9 @@ subsetByOverlaps(gr1,gr2,ignore.strand=F)
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1     16-55      + |         6 0.302972923498601
-  i     chr3     19-58      - |         9 0.740013303002343
-  j     chr3     20-59      - |        10 0.115212131524459
+  f     chr1     16-55      + |         6 0.778833706863225
+  i     chr3     19-58      - |         9 0.452641693642363
+  j     chr3     20-59      - |        10 0.982892949134111
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -622,9 +622,9 @@ gr1[gr1 %over% gr2]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1     16-55      + |         6 0.302972923498601
-  i     chr3     19-58      - |         9 0.740013303002343
-  j     chr3     20-59      - |        10 0.115212131524459
+  f     chr1     16-55      + |         6 0.778833706863225
+  i     chr3     19-58      - |         9 0.452641693642363
+  j     chr3     20-59      - |        10 0.982892949134111
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -1090,7 +1090,7 @@ GenomicFeatures also provides functions to create TxDb objects directly from UCS
 
 ```r
 library(GenomicFeatures)
-txdb <- makeTxDbFromUCSC(genome = "mm9", tablename = "knownGene")
+USCmm9KnownGene <- makeTxDbFromUCSC(genome = "mm9", tablename = "knownGene")
 ```
 
 
@@ -1174,8 +1174,8 @@ USCmm9KnownGene <- makeTxDbFromUCSC(genome = "mm9", tablename = "knownGene")
 Save the annotation object and label them appropriately to facilitate reproducible research:
 
 ```r
-saveDb(txdb,file="Mouse_ucsc_mm9_20190919.sqlite")
-txdb <- loadDb("Mouse_ucsc_mm9_20190919.sqlite")
+saveDb(USCmm9KnownGene,file="Mouse_ucsc_mm9_20190919.sqlite")
+USCmm9KnownGene <- loadDb("Mouse_ucsc_mm9_20190919.sqlite")
 ```
 
 Another way of creating TxDb: </b>makeTxDbFromGFF()</b>
