@@ -2,7 +2,7 @@ Bioconductor Tutorial
 ========================================================
 css: Rpress.css
 author: MRC LMS Bioinformatics Core
-date:https://lmsbioinformatics.github.io/MRCLMSBioinfo/LMStraining.html
+date: https://lmsbioinformatics.github.io/MRCLMSBioinfo/LMStraining.html
 width: 1440
 height: 1100
 autosize: true
@@ -589,12 +589,12 @@ Load the package and list the contents
 ```{r, echo=TRUE, eval=TRUE, message=FALSE}
 library("org.Hs.eg.db")
 ```
-```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+```{r, echo=TRUE, eval=TRUE, collapse=F}
 columns(org.Hs.eg.db)
 ```
 
 To know more about the above identifier types
-```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+```{r, echo=TRUE, eval=TRUE, collapse=F}
 help(SYMBOL)
 ```
 
@@ -602,7 +602,7 @@ Accessing annotation from org.Hs.eg.db
 ========================================================
 
 Which keytypes can be used to query this database? <b>keytypes</b> (What is the difference between <b>columns</b> and <b>keytypes</b>?)
-```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+```{r, echo=TRUE, eval=TRUE, collapse=F}
 keytypes(org.Hs.eg.db)
 ```
 
@@ -611,12 +611,12 @@ keytypes(org.Hs.eg.db)
 Accessing annotation from org.Hs.eg.db
 ========================================================
 If we want to extract few identifiers of a particular keytype, we can use <b>keys</b> function
-```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+```{r, echo=TRUE, eval=TRUE, collapse=F}
 head(keys(org.Hs.eg.db, keytype="SYMBOL"))
 ```
 
 We can extract other annotations for a particular identifier using <b>select</b> function
-```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+```{r, echo=TRUE, eval=TRUE, collapse=F}
 select(org.Hs.eg.db, keys = "A1BG", keytype = "SYMBOL", columns = c("SYMBOL", "GENENAME", "ENSEMBL") )
 ```
 
@@ -626,7 +626,7 @@ Annotating results - Example
 How can we annotate our results (ex: RNA-Seq differential expression analysis results)? 
 
 First, we will load an example results:
-```{r echo=TRUE, eval=TRUE, collapse=TRUE}
+```{r echo=TRUE, eval=TRUE, collapse=F}
 load(system.file("extdata", "resultTable.Rda", package="AnnotationDbi"))
 head(resultTable)
 ```
@@ -688,7 +688,7 @@ USCmm9KnownGene <- makeTxDbFromUCSC(genome = "mm9", tablename = "knownGene")
 
 Since TxDb are inherited from AnnotationDb object, we can use <b>columns, keys, select,</b> and <b>keytypes</b> functions.
 
-```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+```{r, echo=TRUE, eval=TRUE, collapse=F}
 keys <- c("100009600", "100009609", "100009614")
 select(txdb,keys=keys,columns=c("GENEID","TXNAME"),keytype="GENEID")
 ```
@@ -697,7 +697,7 @@ TranscriptDb - TxDb.Mmusculus.UCSC.mm9.knownGene
 ========================================================
 Most common operations performed on TxDb objects are retrieving exons, transcripts and CDS genomic coordinates.  The functions <b>genes, transcripts, exons</b>, and <b>cds</b> return the coordinates for the group as GRanges objects.
 
-```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+```{r, echo=TRUE, eval=TRUE, collapse=F}
 TranscriptRanges <- transcripts(txdb)
 TranscriptRanges[1:3]
 ExonRanges <- exons(txdb)
@@ -710,7 +710,7 @@ TxDb.Mmusculus.UCSC.mm9.knownGene
 ========================================================
 TxDb package also provides interface to discover how genomic features are related to each other. Ex:  Access all transcripts or exons associated to a gene. Such grouping can be achieved by <b>transcriptsBy</b>, <b>exonsBy</b>, and <b>cdsBy</b> functions. The results are returned as GRangesList objects.
 
-```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+```{r, echo=TRUE, eval=TRUE, collapse=F}
 Transcripts <- transcriptsBy(txdb, by = "gene")
 Transcripts[1:2]
 ```

@@ -2,7 +2,7 @@ Bioconductor Tutorial
 ========================================================
 css: Rpress.css
 author: MRC LMS Bioinformatics Core
-date:https://lmsbioinformatics.github.io/MRCLMSBioinfo/LMStraining.html
+date: https://lmsbioinformatics.github.io/MRCLMSBioinfo/LMStraining.html
 width: 1440
 height: 1100
 autosize: true
@@ -184,18 +184,18 @@ gr1
 
 ```
 GRanges object with 10 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                GC
-       <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  a     chr1     11-50      - |         1 0.687342862365767
-  b     chr2     12-51      + |         2 0.454601373523474
-  c     chr2     13-52      + |         3  0.95821252069436
-  d     chr2     14-53      - |         4 0.654869572026655
-  e     chr1     15-54      - |         5 0.896015138365328
-  f     chr1     16-55      + |         6 0.778833706863225
-  g     chr3     17-56      + |         7 0.254087912384421
-  h     chr3     18-57      + |         8 0.609995795879513
-  i     chr3     19-58      - |         9 0.452641693642363
-  j     chr3     20-59      - |        10 0.982892949134111
+    seqnames    ranges strand |     score                 GC
+       <Rle> <IRanges>  <Rle> | <integer>          <numeric>
+  a     chr1     11-50      - |         1  0.958919711876661
+  b     chr2     12-51      + |         2  0.666205116780475
+  c     chr2     13-52      + |         3  0.339983242098242
+  d     chr2     14-53      - |         4    0.8445412395522
+  e     chr1     15-54      - |         5  0.826965955784544
+  f     chr1     16-55      + |         6  0.769047426991165
+  g     chr3     17-56      + |         7  0.344723242102191
+  h     chr3     18-57      + |         8 0.0360652389936149
+  i     chr3     19-58      - |         9  0.782379426527768
+  j     chr3     20-59      - |        10  0.111384007846937
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -214,18 +214,18 @@ mcols(gr1)
 
 ```
 DataFrame with 10 rows and 2 columns
-      score                GC
-  <integer>         <numeric>
-a         1 0.687342862365767
-b         2 0.454601373523474
-c         3  0.95821252069436
-d         4 0.654869572026655
-e         5 0.896015138365328
-f         6 0.778833706863225
-g         7 0.254087912384421
-h         8 0.609995795879513
-i         9 0.452641693642363
-j        10 0.982892949134111
+      score                 GC
+  <integer>          <numeric>
+a         1  0.958919711876661
+b         2  0.666205116780475
+c         3  0.339983242098242
+d         4    0.8445412395522
+e         5  0.826965955784544
+f         6  0.769047426991165
+g         7  0.344723242102191
+h         8 0.0360652389936149
+i         9  0.782379426527768
+j        10  0.111384007846937
 ```
 
 Constructing GRanges object from data frame
@@ -457,9 +457,9 @@ gr1[seqnames(gr1)=="chr1"]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  a     chr1     11-50      - |         1 0.687342862365767
-  e     chr1     15-54      - |         5 0.896015138365328
-  f     chr1     16-55      + |         6 0.778833706863225
+  a     chr1     11-50      - |         1 0.958919711876661
+  e     chr1     15-54      - |         5 0.826965955784544
+  f     chr1     16-55      + |         6 0.769047426991165
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -526,11 +526,11 @@ gr1[gr1_overlaps.m[,"queryHits"], ]
 GRanges object with 5 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1     16-55      + |         6 0.778833706863225
-  i     chr3     19-58      - |         9 0.452641693642363
-  i     chr3     19-58      - |         9 0.452641693642363
-  j     chr3     20-59      - |        10 0.982892949134111
-  j     chr3     20-59      - |        10 0.982892949134111
+  f     chr1     16-55      + |         6 0.769047426991165
+  i     chr3     19-58      - |         9 0.782379426527768
+  i     chr3     19-58      - |         9 0.782379426527768
+  j     chr3     20-59      - |        10 0.111384007846937
+  j     chr3     20-59      - |        10 0.111384007846937
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -548,11 +548,11 @@ gr1[queryHits(gr1_overlaps)]
 GRanges object with 5 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1     16-55      + |         6 0.778833706863225
-  i     chr3     19-58      - |         9 0.452641693642363
-  i     chr3     19-58      - |         9 0.452641693642363
-  j     chr3     20-59      - |        10 0.982892949134111
-  j     chr3     20-59      - |        10 0.982892949134111
+  f     chr1     16-55      + |         6 0.769047426991165
+  i     chr3     19-58      - |         9 0.782379426527768
+  i     chr3     19-58      - |         9 0.782379426527768
+  j     chr3     20-59      - |        10 0.111384007846937
+  j     chr3     20-59      - |        10 0.111384007846937
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -570,9 +570,9 @@ gr1[unique(queryHits(gr1_overlaps))]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1     16-55      + |         6 0.778833706863225
-  i     chr3     19-58      - |         9 0.452641693642363
-  j     chr3     20-59      - |        10 0.982892949134111
+  f     chr1     16-55      + |         6 0.769047426991165
+  i     chr3     19-58      - |         9 0.782379426527768
+  j     chr3     20-59      - |        10 0.111384007846937
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -590,9 +590,9 @@ subsetByOverlaps(gr1,gr2,ignore.strand=F)
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1     16-55      + |         6 0.778833706863225
-  i     chr3     19-58      - |         9 0.452641693642363
-  j     chr3     20-59      - |        10 0.982892949134111
+  f     chr1     16-55      + |         6 0.769047426991165
+  i     chr3     19-58      - |         9 0.782379426527768
+  j     chr3     20-59      - |        10 0.111384007846937
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -622,9 +622,9 @@ gr1[gr1 %over% gr2]
 GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        <Rle> <IRanges>  <Rle> | <integer>         <numeric>
-  f     chr1     16-55      + |         6 0.778833706863225
-  i     chr3     19-58      - |         9 0.452641693642363
-  j     chr3     20-59      - |        10 0.982892949134111
+  f     chr1     16-55      + |         6 0.769047426991165
+  i     chr3     19-58      - |         9 0.782379426527768
+  j     chr3     20-59      - |        10 0.111384007846937
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 ```
@@ -936,6 +936,9 @@ library("org.Hs.eg.db")
 
 ```r
 columns(org.Hs.eg.db)
+```
+
+```
  [1] "ACCNUM"       "ALIAS"        "ENSEMBL"      "ENSEMBLPROT" 
  [5] "ENSEMBLTRANS" "ENTREZID"     "ENZYME"       "EVIDENCE"    
  [9] "EVIDENCEALL"  "GENENAME"     "GO"           "GOALL"       
@@ -958,6 +961,9 @@ Which keytypes can be used to query this database? <b>keytypes</b> (What is the 
 
 ```r
 keytypes(org.Hs.eg.db)
+```
+
+```
  [1] "ACCNUM"       "ALIAS"        "ENSEMBL"      "ENSEMBLPROT" 
  [5] "ENSEMBLTRANS" "ENTREZID"     "ENZYME"       "EVIDENCE"    
  [9] "EVIDENCEALL"  "GENENAME"     "GO"           "GOALL"       
@@ -975,6 +981,9 @@ If we want to extract few identifiers of a particular keytype, we can use <b>key
 
 ```r
 head(keys(org.Hs.eg.db, keytype="SYMBOL"))
+```
+
+```
 [1] "A1BG"  "A2M"   "A2MP1" "NAT1"  "NAT2"  "NATP" 
 ```
 
@@ -982,6 +991,9 @@ We can extract other annotations for a particular identifier using <b>select</b>
 
 ```r
 select(org.Hs.eg.db, keys = "A1BG", keytype = "SYMBOL", columns = c("SYMBOL", "GENENAME", "ENSEMBL") )
+```
+
+```
   SYMBOL               GENENAME         ENSEMBL
 1   A1BG alpha-1-B glycoprotein ENSG00000121410
 ```
@@ -996,6 +1008,9 @@ First, we will load an example results:
 ```r
 load(system.file("extdata", "resultTable.Rda", package="AnnotationDbi"))
 head(resultTable)
+```
+
+```
              logConc     logFC LR.statistic       PValue          FDR
 100418920  -9.639471 -4.679498     378.0732 3.269307e-84 2.613484e-80
 100419779 -10.638865 -4.264830     291.1028 2.859424e-65 1.142912e-61
@@ -1101,6 +1116,9 @@ Since TxDb are inherited from AnnotationDb object, we can use <b>columns, keys, 
 ```r
 keys <- c("100009600", "100009609", "100009614")
 select(txdb,keys=keys,columns=c("GENEID","TXNAME"),keytype="GENEID")
+```
+
+```
      GENEID     TXNAME
 1 100009600 uc009veu.1
 2 100009609 uc012fog.1
@@ -1115,6 +1133,9 @@ Most common operations performed on TxDb objects are retrieving exons, transcrip
 ```r
 TranscriptRanges <- transcripts(txdb)
 TranscriptRanges[1:3]
+```
+
+```
 GRanges object with 3 ranges and 2 metadata columns:
       seqnames          ranges strand |     tx_id     tx_name
          <Rle>       <IRanges>  <Rle> | <integer> <character>
@@ -1123,8 +1144,14 @@ GRanges object with 3 ranges and 2 metadata columns:
   [3]     chr1 4847775-4887990      + |         3  uc007afi.2
   -------
   seqinfo: 35 sequences (1 circular) from mm9 genome
+```
+
+```r
 ExonRanges <- exons(txdb)
 ExonRanges[1:2]
+```
+
+```
 GRanges object with 2 ranges and 1 metadata column:
       seqnames          ranges strand |   exon_id
          <Rle>       <IRanges>  <Rle> | <integer>
@@ -1144,6 +1171,9 @@ TxDb package also provides interface to discover how genomic features are relate
 ```r
 Transcripts <- transcriptsBy(txdb, by = "gene")
 Transcripts[1:2]
+```
+
+```
 GRangesList object of length 2:
 $100009600 
 GRanges object with 1 range and 2 metadata columns:

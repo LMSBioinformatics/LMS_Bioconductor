@@ -1676,16 +1676,16 @@ gr1
 <pre><code>GRanges object with 10 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                 GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
-  a     chr1     11-50      - |         1  0.878439399879426
-  b     chr2     12-51      + |         2  0.333382624201477
-  c     chr2     13-52      + |         3  0.712291674688458
-  d     chr2     14-53      - |         4 0.0917815216816962
-  e     chr1     15-54      - |         5  0.957464572507888
-  f     chr1     16-55      + |         6  0.302972923498601
-  g     chr3     17-56      + |         7  0.928768997779116
-  h     chr3     18-57      + |         8  0.750826743431389
-  i     chr3     19-58      - |         9  0.740013303002343
-  j     chr3     20-59      - |        10  0.115212131524459
+  a     chr1     11-50      - |         1  0.958919711876661
+  b     chr2     12-51      + |         2  0.666205116780475
+  c     chr2     13-52      + |         3  0.339983242098242
+  d     chr2     14-53      - |         4    0.8445412395522
+  e     chr1     15-54      - |         5  0.826965955784544
+  f     chr1     16-55      + |         6  0.769047426991165
+  g     chr3     17-56      + |         7  0.344723242102191
+  h     chr3     18-57      + |         8 0.0360652389936149
+  i     chr3     19-58      - |         9  0.782379426527768
+  j     chr3     20-59      - |        10  0.111384007846937
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1708,16 +1708,16 @@ gr1
 <pre><code>DataFrame with 10 rows and 2 columns
       score                 GC
   &lt;integer&gt;          &lt;numeric&gt;
-a         1  0.878439399879426
-b         2  0.333382624201477
-c         3  0.712291674688458
-d         4 0.0917815216816962
-e         5  0.957464572507888
-f         6  0.302972923498601
-g         7  0.928768997779116
-h         8  0.750826743431389
-i         9  0.740013303002343
-j        10  0.115212131524459
+a         1  0.958919711876661
+b         2  0.666205116780475
+c         3  0.339983242098242
+d         4    0.8445412395522
+e         5  0.826965955784544
+f         6  0.769047426991165
+g         7  0.344723242102191
+h         8 0.0360652389936149
+i         9  0.782379426527768
+j        10  0.111384007846937
 </code></pre>
 
 </div>
@@ -1952,9 +1952,9 @@ GRL &lt;- GRangesList(&quot;Peak1&quot; = gr1, &quot;Peak2&quot; = gr2)
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  a     chr1     11-50      - |         1 0.878439399879426
-  e     chr1     15-54      - |         5 0.957464572507888
-  f     chr1     16-55      + |         6 0.302972923498601
+  a     chr1     11-50      - |         1 0.958919711876661
+  e     chr1     15-54      - |         5 0.826965955784544
+  f     chr1     16-55      + |         6 0.769047426991165
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -2023,11 +2023,11 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]
 <pre><code>GRanges object with 5 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  f     chr1     16-55      + |         6 0.302972923498601
-  i     chr3     19-58      - |         9 0.740013303002343
-  i     chr3     19-58      - |         9 0.740013303002343
-  j     chr3     20-59      - |        10 0.115212131524459
-  j     chr3     20-59      - |        10 0.115212131524459
+  f     chr1     16-55      + |         6 0.769047426991165
+  i     chr3     19-58      - |         9 0.782379426527768
+  i     chr3     19-58      - |         9 0.782379426527768
+  j     chr3     20-59      - |        10 0.111384007846937
+  j     chr3     20-59      - |        10 0.111384007846937
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -2046,11 +2046,11 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]
 <pre><code>GRanges object with 5 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  f     chr1     16-55      + |         6 0.302972923498601
-  i     chr3     19-58      - |         9 0.740013303002343
-  i     chr3     19-58      - |         9 0.740013303002343
-  j     chr3     20-59      - |        10 0.115212131524459
-  j     chr3     20-59      - |        10 0.115212131524459
+  f     chr1     16-55      + |         6 0.769047426991165
+  i     chr3     19-58      - |         9 0.782379426527768
+  i     chr3     19-58      - |         9 0.782379426527768
+  j     chr3     20-59      - |        10 0.111384007846937
+  j     chr3     20-59      - |        10 0.111384007846937
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -2069,9 +2069,9 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  f     chr1     16-55      + |         6 0.302972923498601
-  i     chr3     19-58      - |         9 0.740013303002343
-  j     chr3     20-59      - |        10 0.115212131524459
+  f     chr1     16-55      + |         6 0.769047426991165
+  i     chr3     19-58      - |         9 0.782379426527768
+  j     chr3     20-59      - |        10 0.111384007846937
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -2090,9 +2090,9 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  f     chr1     16-55      + |         6 0.302972923498601
-  i     chr3     19-58      - |         9 0.740013303002343
-  j     chr3     20-59      - |        10 0.115212131524459
+  f     chr1     16-55      + |         6 0.769047426991165
+  i     chr3     19-58      - |         9 0.782379426527768
+  j     chr3     20-59      - |        10 0.111384007846937
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -2121,9 +2121,9 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  f     chr1     16-55      + |         6 0.302972923498601
-  i     chr3     19-58      - |         9 0.740013303002343
-  j     chr3     20-59      - |        10 0.115212131524459
+  f     chr1     16-55      + |         6 0.769047426991165
+  i     chr3     19-58      - |         9 0.782379426527768
+  j     chr3     20-59      - |        10 0.111384007846937
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -2489,7 +2489,9 @@ SampleAlign1 &lt;- readGAlignments(BamFile,param=param1)
 </code></pre>
 
 <pre><code class="r">columns(org.Hs.eg.db)
- [1] &quot;ACCNUM&quot;       &quot;ALIAS&quot;        &quot;ENSEMBL&quot;      &quot;ENSEMBLPROT&quot; 
+</code></pre>
+
+<pre><code> [1] &quot;ACCNUM&quot;       &quot;ALIAS&quot;        &quot;ENSEMBL&quot;      &quot;ENSEMBLPROT&quot; 
  [5] &quot;ENSEMBLTRANS&quot; &quot;ENTREZID&quot;     &quot;ENZYME&quot;       &quot;EVIDENCE&quot;    
  [9] &quot;EVIDENCEALL&quot;  &quot;GENENAME&quot;     &quot;GO&quot;           &quot;GOALL&quot;       
 [13] &quot;IPI&quot;          &quot;MAP&quot;          &quot;OMIM&quot;         &quot;ONTOLOGY&quot;    
@@ -2512,7 +2514,9 @@ SampleAlign1 &lt;- readGAlignments(BamFile,param=param1)
 <p>Which keytypes can be used to query this database? <b>keytypes</b> (What is the difference between <b>columns</b> and <b>keytypes</b>?)</p>
 
 <pre><code class="r">keytypes(org.Hs.eg.db)
- [1] &quot;ACCNUM&quot;       &quot;ALIAS&quot;        &quot;ENSEMBL&quot;      &quot;ENSEMBLPROT&quot; 
+</code></pre>
+
+<pre><code> [1] &quot;ACCNUM&quot;       &quot;ALIAS&quot;        &quot;ENSEMBL&quot;      &quot;ENSEMBLPROT&quot; 
  [5] &quot;ENSEMBLTRANS&quot; &quot;ENTREZID&quot;     &quot;ENZYME&quot;       &quot;EVIDENCE&quot;    
  [9] &quot;EVIDENCEALL&quot;  &quot;GENENAME&quot;     &quot;GO&quot;           &quot;GOALL&quot;       
 [13] &quot;IPI&quot;          &quot;MAP&quot;          &quot;OMIM&quot;         &quot;ONTOLOGY&quot;    
@@ -2530,13 +2534,17 @@ SampleAlign1 &lt;- readGAlignments(BamFile,param=param1)
 <p>If we want to extract few identifiers of a particular keytype, we can use <b>keys</b> function</p>
 
 <pre><code class="r">head(keys(org.Hs.eg.db, keytype=&quot;SYMBOL&quot;))
-[1] &quot;A1BG&quot;  &quot;A2M&quot;   &quot;A2MP1&quot; &quot;NAT1&quot;  &quot;NAT2&quot;  &quot;NATP&quot; 
+</code></pre>
+
+<pre><code>[1] &quot;A1BG&quot;  &quot;A2M&quot;   &quot;A2MP1&quot; &quot;NAT1&quot;  &quot;NAT2&quot;  &quot;NATP&quot; 
 </code></pre>
 
 <p>We can extract other annotations for a particular identifier using <b>select</b> function</p>
 
 <pre><code class="r">select(org.Hs.eg.db, keys = &quot;A1BG&quot;, keytype = &quot;SYMBOL&quot;, columns = c(&quot;SYMBOL&quot;, &quot;GENENAME&quot;, &quot;ENSEMBL&quot;) )
-  SYMBOL               GENENAME         ENSEMBL
+</code></pre>
+
+<pre><code>  SYMBOL               GENENAME         ENSEMBL
 1   A1BG alpha-1-B glycoprotein ENSG00000121410
 </code></pre>
 
@@ -2552,7 +2560,9 @@ SampleAlign1 &lt;- readGAlignments(BamFile,param=param1)
 
 <pre><code class="r">load(system.file(&quot;extdata&quot;, &quot;resultTable.Rda&quot;, package=&quot;AnnotationDbi&quot;))
 head(resultTable)
-             logConc     logFC LR.statistic       PValue          FDR
+</code></pre>
+
+<pre><code>             logConc     logFC LR.statistic       PValue          FDR
 100418920  -9.639471 -4.679498     378.0732 3.269307e-84 2.613484e-80
 100419779 -10.638865 -4.264830     291.1028 2.859424e-65 1.142912e-61
 100271867 -11.448981 -4.009603     222.3653 2.757135e-50 7.346846e-47
@@ -2645,14 +2655,16 @@ txdb &lt;- TxDb.Mmusculus.UCSC.mm9.knownGene
 <p>GenomicFeatures also provides functions to create TxDb objects directly from UCSC and Biomart databases: <b> makeTxDbFromBiomart</b> and <b>makeTxDbFromUCSC</b></p>
 
 <pre><code class="r">library(GenomicFeatures)
-txdb &lt;- makeTxDbFromUCSC(genome = &quot;mm9&quot;, tablename = &quot;knownGene&quot;)
+USCmm9KnownGene &lt;- makeTxDbFromUCSC(genome = &quot;mm9&quot;, tablename = &quot;knownGene&quot;)
 </code></pre>
 
 <p>Since TxDb are inherited from AnnotationDb object, we can use <b>columns, keys, select,</b> and <b>keytypes</b> functions.</p>
 
 <pre><code class="r">keys &lt;- c(&quot;100009600&quot;, &quot;100009609&quot;, &quot;100009614&quot;)
 select(txdb,keys=keys,columns=c(&quot;GENEID&quot;,&quot;TXNAME&quot;),keytype=&quot;GENEID&quot;)
-     GENEID     TXNAME
+</code></pre>
+
+<pre><code>     GENEID     TXNAME
 1 100009600 uc009veu.1
 2 100009609 uc012fog.1
 3 100009614 uc011xhj.1
@@ -2668,7 +2680,9 @@ select(txdb,keys=keys,columns=c(&quot;GENEID&quot;,&quot;TXNAME&quot;),keytype=&
 
 <pre><code class="r">TranscriptRanges &lt;- transcripts(txdb)
 TranscriptRanges[1:3]
-GRanges object with 3 ranges and 2 metadata columns:
+</code></pre>
+
+<pre><code>GRanges object with 3 ranges and 2 metadata columns:
       seqnames          ranges strand |     tx_id     tx_name
          &lt;Rle&gt;       &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt; &lt;character&gt;
   [1]     chr1 4797974-4832908      + |         1  uc007afg.1
@@ -2676,9 +2690,13 @@ GRanges object with 3 ranges and 2 metadata columns:
   [3]     chr1 4847775-4887990      + |         3  uc007afi.2
   -------
   seqinfo: 35 sequences (1 circular) from mm9 genome
-ExonRanges &lt;- exons(txdb)
+</code></pre>
+
+<pre><code class="r">ExonRanges &lt;- exons(txdb)
 ExonRanges[1:2]
-GRanges object with 2 ranges and 1 metadata column:
+</code></pre>
+
+<pre><code>GRanges object with 2 ranges and 1 metadata column:
       seqnames          ranges strand |   exon_id
          &lt;Rle&gt;       &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;
   [1]     chr1 4797974-4798063      + |         1
@@ -2697,7 +2715,9 @@ GRanges object with 2 ranges and 1 metadata column:
 
 <pre><code class="r">Transcripts &lt;- transcriptsBy(txdb, by = &quot;gene&quot;)
 Transcripts[1:2]
-GRangesList object of length 2:
+</code></pre>
+
+<pre><code>GRangesList object of length 2:
 $100009600 
 GRanges object with 1 range and 2 metadata columns:
       seqnames            ranges strand |     tx_id     tx_name
@@ -2728,8 +2748,8 @@ seqinfo: 35 sequences (1 circular) from mm9 genome
 
 <p>Save the annotation object and label them appropriately to facilitate reproducible research:</p>
 
-<pre><code class="r">saveDb(txdb,file=&quot;Mouse_ucsc_mm9_20190919.sqlite&quot;)
-txdb &lt;- loadDb(&quot;Mouse_ucsc_mm9_20190919.sqlite&quot;)
+<pre><code class="r">saveDb(USCmm9KnownGene,file=&quot;Mouse_ucsc_mm9_20190919.sqlite&quot;)
+USCmm9KnownGene &lt;- loadDb(&quot;Mouse_ucsc_mm9_20190919.sqlite&quot;)
 </code></pre>
 
 <p>Another way of creating TxDb: </b>makeTxDbFromGFF()</b></p>
